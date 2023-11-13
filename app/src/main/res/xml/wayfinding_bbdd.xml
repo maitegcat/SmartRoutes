@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<database name="wayfindingbbdd" version="1">
+    <table name="baliza">
+        <column name="idbaliza" type="integer" primaryKey="true" autoIncrement="true"/>
+        <column name="name" type="text"/>
+        <column name="coor_x" type="real"/>
+        <column name="coor_y" type="real"/>
+        <column name="codletra" type="text"/>
+        <column name="idlugar" type="integer" />
+
+        <foreign-key foreignTable="Lugar" onDelete="CASCADE">
+            <reference local="idlugar" foreign="id" />
+        </foreign-key>
+     </table>
+    <table name="lugar">
+        <column name="idlugar" type="integer" primaryKey="true" autoIncrement="true"/>
+        <column name="name" type="text"/>
+        <column name="descripcion" type="text"/>
+        <column name="coordenada_x" type="real"/>
+        <column name="coordenada_y" type="real"/>
+        <column name="imagen" type="blob"/>
+        <column name="idtype_place" type="integer"/>
+        <column name="idlugares_prox" type="integer"/>
+
+        <foreign-key foreignTable="TypePlace" onDelete="CASCADE">
+            <reference local="idtype_place" foreign="id" />
+        </foreign-key>
+
+        <foreign-key foreignTable="lugares_prox" onDelete="CASCADE">
+            <reference local="idlugares_prox" foreign="id" />
+        </foreign-key>
+
+    </table>
+    <table name="dis_baliza">
+        <column name="iddistancia_baliza" type="integer" primaryKey="true" autoIncrement="true"/>
+        <column name="value" type="text"/>
+        <column name="baliza_a" type="integer"/>
+        <column name="baliza_b" type="integer"/>
+        <column name="baliza_c" type="integer"/>
+
+    </table>
+    <table name="type_place">
+        <column name="idtype_place" type="integer" primaryKey="true" autoIncrement="true"/>
+        <column name="name" type="text"/>
+        <column name="descripcion" type="text"/>
+    </table>
+
+    <table name="lugares_prox">
+        <column name="idlugares_prox" type="integer" primaryKey="true" autoIncrement="true"/>
+        <column name="lugar_prox" type="integer"/>
+        <column name="lugar_prin" type="integer"/>
+    </table>
+</database>

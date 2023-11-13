@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:text_align="http://schemas.android.com/apk/res-auto"
+    android:textDirection="anyRtl"
+    android:background="@color/fondo_gris"
+    tools:context=".Activity.MainActivity">
+
+
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:orientation="vertical">
+
+
+        <include
+            layout="@layout/activity_barramenuclose"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingLeft="14dp" />
+
+
+        <Button
+            android:id="@+id/buttonAllGuide"
+            android:layout_width="match_parent"
+            android:layout_height="155dp"
+            android:background="@drawable/btn_img1"
+            android:fontFamily="@font/montserrat"
+            android:textAllCaps="false"
+            android:text="Localización\n en exteriores"
+            android:gravity="left|center_vertical"
+            android:paddingLeft="160dp"
+            android:textSize="26dp"
+            tools:ignore="SpeakableTextPresentCheck"
+            android:layout_marginTop="40dp"
+            tools:layout_editor_absoluteX="33dp"
+            tools:layout_editor_absoluteY="271dp" />
+
+        <Button
+            android:id="@+id/buttonIndoor"
+            android:layout_width="match_parent"
+            android:layout_height="155dp"
+            android:background="@drawable/btn_img2"
+            android:fontFamily="@font/montserrat"
+            android:textAllCaps="false"
+            android:text="Localización\n en Interiores"
+            android:gravity="left|center_vertical"
+            android:paddingLeft="160dp"
+            android:textSize="26dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
+            tools:ignore="SpeakableTextPresentCheck" />
+
+             <Button
+                android:id="@+id/buttonImage"
+                android:layout_width="match_parent"
+                android:layout_height="155dp"
+                android:layout_centerInParent="true"
+                android:layout_gravity="center_horizontal"
+                android:background="@drawable/btn_img3"
+                android:fontFamily="@font/montserrat"
+                android:textAllCaps="false"
+                android:text="Localización\n en Interiores"
+                android:gravity="left|center_vertical"
+                 android:paddingLeft="160dp"
+                android:textSize="26dp"
+                tools:ignore="SpeakableTextPresentCheck" />
+
+       <!-- <Button
+            android:id="@+id/buttonImage1"
+            android:layout_width="match_parent"
+            android:layout_height="155dp"
+            android:layout_centerInParent="true"
+            android:layout_gravity="center_horizontal"
+            android:background="@drawable/btn_img3"
+            android:fontFamily="@font/montserrat"
+            android:textAllCaps="false"
+            android:text="Localización\n en Interiores"
+            android:gravity="left|center_vertical"
+            android:paddingLeft="160dp"
+            android:textSize="26dp"
+            tools:ignore="SpeakableTextPresentCheck" />-->
+
+    </LinearLayout>
+
+</RelativeLayout>

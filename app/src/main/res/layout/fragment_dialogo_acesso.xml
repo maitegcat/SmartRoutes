@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Activity.DialogoAcceso">
+
+    <LinearLayout xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/letra_blanca"
+        android:orientation="vertical"
+        android:weightSum="1"
+        tools:context=".Dialogo_Clase"
+        tools:ignore="MissingConstraints">
+
+        <!-- TODO: Update blank fragment layout -->
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="164dp"
+            android:orientation="horizontal"
+            android:weightSum="1">
+
+            <ListView
+                android:id="@+id/lista"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:divider="@color/separador"
+                android:dividerHeight="2px" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/boton"
+                android:layout_width="40dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="30dp"
+                android:layout_marginLeft="60dp"
+                android:layout_marginRight="60dp"
+                android:layout_weight="0.01"
+                android:autoText="false"
+                android:background="@drawable/borderedondos"
+                android:drawableTint="@android:color/white"
+                android:text="@string/btn_atras"
+                android:textColor="@color/letra_blanca"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                tools:text="@string/btn_atras" />
+        </LinearLayout>
+    </LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

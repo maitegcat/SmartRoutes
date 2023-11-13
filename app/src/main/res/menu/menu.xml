@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+      <item
+          android:id="@+id/optionScan"
+          android:title="Activar Localización"
+          android:icon="@android:drawable/ic_menu_rotate">
+      </item>
+      <item
+          android:id="@+id/optionStop"
+          android:title="Parar Localización"
+          android:icon="@android:drawable/ic_menu_close_clear_cancel">
+      </item>
+      <item
+          android:id="@+id/optionDebug"
+          android:title="Modo Debug"
+          android:icon="@android:drawable/ic_menu_edit">
+      </item>
+      <item
+          android:id="@+id/optionCredits"
+          android:title="Créditos"
+          android:icon="@drawable/iconoinfo">
+      </item>
+</menu>

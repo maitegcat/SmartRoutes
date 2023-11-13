@@ -1,0 +1,983 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rutas>
+    <destino nombre="Biblioteca URJC Mostoles">
+        <origen
+            extra_init="Está usted en Metro - Universidad Rey Juan Carlos" nombre="Metro - Universidad Rey Juan Carlos">
+            <coordenada extra=" Salga del metro y continúe recto." latlon="40.334754,-3.872226"/>
+            <coordenada extra=" Gire ligeramente a la derecha" latlon="40.33464110873595,-3.873022645711899"/>
+            <coordenada extra="Siga recto. Atención! Paso de cebra." latlon="40.33467586669952,-3.8730642199516296"/>
+            <coordenada extra=" Salga del paso de cebra" latlon="40.33476071694707,-3.873172849416733"/>
+            <coordenada extra=" Gire ligeramente a la izquierda" latlon="40.33477298444394,-3.873194307088852"/>
+            <coordenada extra="Siga recto. Va a rodear una rotonda." latlon="40.33476071694707,-3.8733015954494476"/>
+            <coordenada extra="Siga recto. " latlon="40.33477298444394,-3.873359262943268"/>
+            <coordenada extra="Siga recto. " latlon="40.33479343026705,-3.8735121488571167"/>
+            <coordenada extra="Siga recto. Atención! Paso de cebra" latlon="40.334797519430936,-3.87362077832222"/>
+            <coordenada extra=" Salga del paso de cebra" latlon="40.33478320735628,-3.8736945390701294"/>
+            <coordenada extra="Gire a la derecha. " latlon="40.33478831881187,-3.873714655637741"/>
+            <coordenada extra=" Entre por la puerta de la Universidad" latlon="40.334913277807196,-3.8737615942955017"/>
+            <coordenada extra="Siga recto. " latlon="40.335173721447845,-3.8738447427749634"/>
+            <coordenada extra="Siga recto. No se desvíe pues hay bancos a los laterales" latlon="40.33531043598694,-3.873884305357933"/>
+            <coordenada extra="Siga recto. " latlon="40.335463267147546,-3.8739272207021713"/>
+            <coordenada extra="Siga recto. " latlon="40.335656781440896,-3.8740110397338867"/>
+            <coordenada extra="Siga recto. " latlon="40.33584433723257,-3.8740794360637665"/>
+            <coordenada extra="Siga recto. A su izquierda está el edificio de Secretaría." latlon="40.33604633209678,-3.87418270111084"/>
+            <coordenada extra="Siga recto. " latlon="40.336340745796015,-3.8742953538894653"/>
+            <coordenada extra="Siga recto. " latlon="40.3365983567291,-3.8743972778320312"/>
+            <coordenada extra="Siga recto. " latlon="40.33683552148045,-3.8745099306106567"/>
+            <coordenada extra="Gire a la izquierda. De frente se encuentra el Rectorado" latlon="40.33708904149972,-3.874601125717163"/>
+            <coordenada extra="Siga recto. Atención! Hay una farola." latlon="40.33703070897884,-3.874732553958893"/>
+            <coordenada extra="Siga recto. " latlon="40.33698164061995,-3.874855935573578"/>
+            <coordenada extra="Siga recto. Atención! Hay una farola" latlon="40.33692439415613,-3.8749873638153076"/>
+            <coordenada extra="Siga recto. " latlon="40.33687737023878,-3.8751375675201416"/>
+            <coordenada extra="Gire a la derecha. " latlon="40.33678127778408,-3.875451385974884"/>
+            <coordenada extra=" Felicidades! Ha llegado a su destino" latlon="40.337007,-3.875542"/>
+        </origen>
+    </destino>
+    <destino nombre="Departamental II">
+		<origen nombre="Metro" extra_init="Está usted en la parada de Metro Universidad Rey Juan Carlos, siga recto para empezar la ruta hacia el Departamental II">
+			<coordenada extra="Continue recto para llegar al paso de peatones" latlon="40.334705,-3.872642"/>
+			<coordenada extra="Precaución, paso de peatones, gire levemente hacia la derecha y cruce" latlon="40.33466,-3.873041"/>
+			<coordenada extra="Ya ha cruzado, gire hacia su izquierda y camine recto pegado al bordillo que tiene a su derecha" latlon="40.334779,-3.873221"/>
+			<coordenada extra="Precaución, paso de peatones, gire hacia su derecha sin cruzarlo y continue pegado al bordillo hasta llegar a la valla de entrada, luego gire a su izquierda y sígala hasta la puerta de entrada." latlon="40.334799,-3.873599"/>
+			<coordenada extra="Ha llegado a la puerta de entrada, gire a la derecha y continue recto." latlon="40.334904,-3.873759"/>			
+			<coordenada extra="Está usted en la Universidad Rey Juan Carlos, siga recto para llegar a su destino." latlon="40.335022,-3.873789"/>
+			<coordenada extra="Continue recto." latlon="40.3352,-3.87384"/>
+			<coordenada extra="Continue recto." latlon="40.335623,-3.874028"/>
+			<coordenada extra="Continue recto, a su izquierda se encuentra el edificio de gestión." latlon="40.336008,-3.874173"/>
+			<coordenada extra="Siga recto." latlon="40.336375,-3.874293"/>
+			<coordenada extra="Siga recto, en breves momentos tendrá que girar hacia su izquierda." latlon="40.336782,-3.874453"/>
+			<coordenada extra="Gire hacia su izquierda y siga recto." latlon="40.337122,-3.874589"/>
+			<coordenada extra="Continue recto." latlon="40.336946,-3.874967"/>
+			<coordenada extra="Siga recto" latlon="40.336842,-3.875174"/>
+			<coordenada extra="Está cerca de la Biblioteca. Continue recto." latlon="40.336623,-3.875629"/>
+			<coordenada extra="Siga recto, se está alejando de la biblioteca, acerquese al bordillo de su derecha" latlon="40.336418,-3.876032"/>
+			<coordenada extra="Está entre el Departamental uno y el Aulario uno. Continue recto" latlon="40.336191,-3.876545"/>
+			<coordenada extra="Continue recto, próximamente deberá girar levemente hacia la derecha." latlon="40.335906,-3.877099"/>
+			<coordenada extra="Gire levemente hacia su derecha por rampa para llegar hacia su destino" latlon="40.335744,-3.877424"/>
+			<coordenada extra="Está usted en Departamental dos, a su derecha tiene la puerta de entrada. Ha llegado a su destino" latlon="40.335581,-3.877813"/>
+		</origen>
+	</destino>
+    <destino nombre="Departamental I">
+        <origen
+            extra_init="Está usted en Metro - Universidad Rey Juan Carlos" nombre="Metro - Universidad Rey Juan Carlos">
+            <coordenada extra=" peatones." latlon="40.334754,-3.872226"/>
+            <coordenada extra="Gire a la izquierda. " latlon="40.33467021214231,-3.8724660873413086"/>
+            <coordenada extra=" Entre al edificio." latlon="40.3345966070157,-3.87292742729187"/>
+            <coordenada extra=" " latlon="40.33460478536706,-3.873034715652466"/>
+            <coordenada extra="undefined" latlon="40.33479288717497,-3.8732385635375977"/>
+            <coordenada extra="undefined" latlon="40.334801065502546,-3.873356580734253"/>
+            <coordenada extra="undefined" latlon="40.33487467040614,-3.873506784439087"/>
+            <coordenada extra="undefined" latlon="40.334882848723815,-3.8736462593078613"/>
+            <coordenada extra="undefined" latlon="40.33491556198457,-3.8737642765045166"/>
+            <coordenada extra="undefined" latlon="40.33514455436579,-3.8738715648651123"/>
+            <coordenada extra="undefined" latlon="40.33543079374951,-3.8740646839141846"/>
+            <coordenada extra="undefined" latlon="40.335839705048485,-3.8742363452911377"/>
+            <coordenada extra="undefined" latlon="40.33636310789518,-3.874483108520508"/>
+            <coordenada extra="undefined" latlon="40.33692739704103,-3.874751329421997"/>
+            <coordenada extra="undefined" latlon="40.3367965478043,-3.8750410079956055"/>
+            <coordenada extra="undefined" latlon="40.33654302668603,-3.875877857208252"/>
+            <coordenada extra="undefined" latlon="40.3362077230988,-3.8764894008636475"/>
+            <coordenada extra="undefined" latlon="40.336330395336205,-3.8766074180603027"/>
+            <coordenada extra="undefined" latlon="40.336502,-3.876805"/>
+        </origen>
+    </destino>
+    <destino nombre="Laboratorio I">
+        <origen
+            extra_init="Está usted en Metro - Universidad Rey Juan Carlos" nombre="Metro - Universidad Rey Juan Carlos">
+            <coordenada extra=" " latlon="40.334754,-3.872226"/>
+            <coordenada extra="undefined" latlon="40.33476017385472,-3.8724660873413086"/>
+            <coordenada extra="undefined" latlon="40.33457207195564,-3.8727235794067383"/>
+            <coordenada extra="undefined" latlon="40.33454753688666,-3.8729381561279297"/>
+            <coordenada extra="undefined" latlon="40.33461296371743,-3.873056173324585"/>
+            <coordenada extra="undefined" latlon="40.33475199552218,-3.873453140258789"/>
+            <coordenada extra="undefined" latlon="40.335046414869,-3.8738715648651123"/>
+            <coordenada extra="undefined" latlon="40.33553711092563,-3.874129056930542"/>
+            <coordenada extra="undefined" latlon="40.33602780341386,-3.8743972778320312"/>
+            <coordenada extra="undefined" latlon="40.33672294499712,-3.874955177307129"/>
+            <coordenada extra="undefined" latlon="40.33616683230347,-3.87642502784729"/>
+            <coordenada extra="undefined" latlon="40.33592148701089,-3.8762855529785156"/>
+            <coordenada extra="undefined" latlon="40.335826892540354,-3.8761192560195923"/>
+        </origen>
+    </destino>
+    <destino nombre="Laboratorio III">
+        <origen
+            extra_init="Está usted en Metro - Universidad Rey Juan Carlos" nombre="Metro - Universidad Rey Juan Carlos">
+            <coordenada extra="" latlon="40.334754,-3.872226"/>
+            <coordenada extra="" latlon="40.3345797050947,-3.8784849643707275"/>
+        </origen>
+    </destino>
+    <destino nombre="Edificio de Gestión">
+        <origen
+            extra_init="Está usted en Metro - Universidad Rey Juan Carlos" nombre="Metro - Universidad Rey Juan Carlos">
+            <coordenada extra=" " latlon="40.334754,-3.872226"/>
+            <coordenada extra="undefined" latlon="40.334694747166694,-3.8726162910461426"/>
+            <coordenada extra="undefined" latlon="40.33465385545444,-3.8728952407836914"/>
+            <coordenada extra="undefined" latlon="40.33476017385472,-3.8731741905212402"/>
+            <coordenada extra="undefined" latlon="40.33494009691972,-3.8737106323242188"/>
+            <coordenada extra="undefined" latlon="40.33546350674463,-3.874225616455078"/>
+            <coordenada extra="undefined" latlon="40.33579063582344,-3.874633312225342"/>
+            <coordenada extra="undefined" latlon="40.335766,-3.875013"/>
+        </origen>
+    </destino>
+    <destino nombre="Servicio de Deportes">
+        <origen
+            extra_init="Está usted en Metro - Universidad Rey Juan Carlos" nombre="Metro - Universidad Rey Juan Carlos">
+            <coordenada extra="" latlon="40.334754,-3.872226"/>
+            <coordenada extra="" latlon="40.3344,-3.87718"/>
+        </origen>
+    </destino>
+    <destino nombre="Edificio de Restauración">
+        <origen
+            extra_init="Está usted en Metro - Universidad Rey Juan Carlos" nombre="Metro - Universidad Rey Juan Carlos">
+            <coordenada extra=" " latlon="40.334754,-3.872226"/>
+            <coordenada extra="undefined" latlon="40.33474381718865,-3.8732171058654785"/>
+            <coordenada extra="undefined" latlon="40.335070949756584,-3.873732089996338"/>
+            <coordenada extra="undefined" latlon="40.33549621972385,-3.8743436336517334"/>
+            <coordenada extra="undefined" latlon="40.33520998061768,-3.8749659061431885"/>
+            <coordenada extra="undefined" latlon="40.33485831376783,-3.875652551651001"/>
+            <coordenada extra="undefined" latlon="40.33476835218629,-3.8765645027160645"/>
+            <coordenada extra="undefined" latlon="40.33455571524396,-3.8772833347320557"/>
+            <coordenada extra="undefined" latlon="40.334,-3.87718"/>
+        </origen>
+    </destino>
+    <destino nombre="Centro de Apoyo Tecnológico (TAC)">
+        <origen
+            extra_init="Está usted en Metro - Universidad Rey Juan Carlos" nombre="Metro - Universidad Rey Juan Carlos">
+            <coordenada extra=" " latlon="40.334754,-3.872226"/>
+            <coordenada
+                extra=" Cerca de biblioteca. Gire a mano izquierda." latlon="40.33465385545444,-3.8728737831115723"/>
+            <coordenada
+                extra=" Cuidado con la rotonda. Vaya por la acera." latlon="40.33485831376783,-3.873399496078491"/>
+            <coordenada extra=" " latlon="40.33541443724601,-3.8740861415863037"/>
+            <coordenada extra="undefined" latlon="40.33619954494173,-3.874697685241699"/>
+            <coordenada extra="undefined" latlon="40.33678836971857,-3.87518048286438"/>
+            <coordenada extra="undefined" latlon="40.336330395336205,-3.876146078109741"/>
+            <coordenada extra="undefined" latlon="40.33564342793425,-3.8776051998138428"/>
+            <coordenada extra="undefined" latlon="40.33450664508523,-3.879525661468506"/>
+            <coordenada extra="undefined" latlon="40.33403229837748,-3.880298137664795"/>
+            <coordenada extra="undefined" latlon="40.333999584688534,-3.8804805278778076"/>
+            <coordenada extra="undefined" latlon="40.33430218570628,-3.8810062408447266"/>
+            <coordenada extra="undefined" latlon="40.33461296371743,-3.881349563598633"/>
+            <coordenada extra="undefined" latlon="40.33442022700495,-3.881945013999939"/>
+        </origen>
+    </destino>
+    <destino nombre="Ampliación del Rectorado">
+        <origen
+            extra_init="Está usted en Metro - Universidad Rey Juan Carlos" nombre="Metro - Universidad Rey Juan Carlos">
+            <coordenada extra=" " latlon="40.334754,-3.872226"/>
+            <coordenada extra=" " latlon="40.33458842866334,-3.8729381561279297"/>
+            <coordenada extra=" " latlon="40.33478470884638,-3.8732171058654785"/>
+            <coordenada
+                extra=" A su izquierda tiene la puerta principal de rectorado. Gire a la derecha para seguir a ampliación de rectorado." latlon="40.33494009691972,-3.8737428188323975"/>
+            <coordenada extra=" " latlon="40.3355698238692,-3.8740646839141846"/>
+            <coordenada extra="undefined" latlon="40.33642853296553,-3.8743436336517334"/>
+            <coordenada extra="undefined" latlon="40.33702553380206,-3.874729871749878"/>
+            <coordenada extra="undefined" latlon="40.33739354538463,-3.8746869564056396"/>
+            <coordenada extra="undefined" latlon="40.33748350346619,-3.8742899894714355"/>
+            <coordenada extra="undefined" latlon="40.33742625742818,-3.873807191848755"/>
+            <coordenada extra="undefined" latlon="40.33744206825185,-3.873533606529236"/>
+        </origen>
+    </destino>
+    <destino nombre="Metro - Universidad Rey Juan Carlos">
+        <origen extra_init="Está usted en Biblioteca URJC Mostoles" nombre="Biblioteca URJC Mostoles">
+            <coordenada
+                extra="Siga recto. Usted Está en la biblioteca URJC de móstoles" latlon="40.337007,-3.875542"/>
+            <coordenada extra="Gire a la izquierda. " latlon="40.33674652090503,-3.875429928302765"/>
+            <coordenada extra="Gire a la derecha. " latlon="40.33695915094352,-3.8747701048851013"/>
+            <coordenada extra="Siga recto. " latlon="40.336654517315324,-3.874649405479431"/>
+            <coordenada
+                extra="Siga recto. A su derecha se encuentra la secretaría de alumnos." latlon="40.33600435503892,-3.8743892312049866"/>
+            <coordenada extra="Siga recto. " latlon="40.335609756640146,-3.8742095232009888"/>
+            <coordenada extra="Siga recto. cuidado,escalón" latlon="40.33527240384774,-3.874078094959259"/>
+            <coordenada extra="Siga recto. cuidado,escalón." latlon="40.33516813082521,-3.8740217685699463"/>
+            <coordenada extra="Gire a la izquierda. " latlon="40.33493913852399,-3.8739117980003357"/>
+            <coordenada extra="Gire a la derecha. salga por la puerta" latlon="40.33496571802739,-3.873801827430725"/>
+            <coordenada extra="Siga recto. " latlon="40.334881347235886,-3.87374684214592"/>
+            <coordenada
+                extra="Gire a la izquierda. precaución, paso de peatones" latlon="40.334780140482735,-3.8737106323242188"/>
+            <coordenada extra=" continue por la acera" latlon="40.33479343026705,-3.873612731695175"/>
+            <coordenada extra=" continúe por la acera" latlon="40.33479138568502,-3.8735201954841614"/>
+            <coordenada extra=" continúe por la acera" latlon="40.334786274229664,-3.8734491169452667"/>
+            <coordenada extra=" continúe por la acera" latlon="40.33476071694707,-3.8733525574207306"/>
+            <coordenada extra="Gire a la izquierda. " latlon="40.334743337989416,-3.8732734322547913"/>
+            <coordenada
+                extra="Gire a la derecha. precaución, paso de peatones" latlon="40.334769917569936,-3.8731902837753296"/>
+            <coordenada
+                extra="Siga recto. salga del paso de peatones. Cuidado con el escalón" latlon="40.33467893357779,-3.873080313205719"/>
+            <coordenada extra="Gire a la izquierda. " latlon="40.33462577433459,-3.8730373978614807"/>
+            <coordenada extra="Siga recto. " latlon="40.33467893357779,-3.8727356493473053"/>
+            <coordenada extra=" Ha llegado a su destino!" latlon="40.334754,-3.872226"/>
+        </origen>
+    </destino>
+    <destino nombre="Departamental II">
+        <origen extra_init="Está usted en Biblioteca URJC Mostoles" nombre="Biblioteca URJC Mostoles">
+            <coordenada extra=" Estás en la biblioteca, sal." latlon="40.337007,-3.875542"/>
+            <coordenada extra="Siga recto. " latlon="40.33683743821804,-3.8753950595855713"/>
+            <coordenada extra=" hay una farola." latlon="40.336624807796,-3.8755452632904053"/>
+            <coordenada extra=" cuidado escaleras." latlon="40.33642853296553,-3.8759100437164307"/>
+            <coordenada extra=" ha llegado." latlon="40.33630586090656,-3.8762319087982178"/>
+            <coordenada extra="undefined" latlon="40.33619954494173,-3.8764357566833496"/>
+            <coordenada extra="undefined" latlon="40.336060516119524,-3.8766610622406006"/>
+            <coordenada extra="undefined" latlon="40.335798814030106,-3.8772404193878174"/>
+            <coordenada extra="undefined" latlon="40.33559435856647,-3.8776373863220215"/>
+            <coordenada extra="undefined" latlon="40.33559435856647,-3.877851963043213"/>
+            <coordenada extra="undefined" latlon="40.335823,-3.877964"/>
+        </origen>
+    </destino>
+    <destino nombre="Edificio de REstáuración">
+        <origen extra_init="Está usted en Biblioteca URJC Mostoles" nombre="Biblioteca URJC Mostoles">
+            <coordenada extra="undefined" latlon="40.337007,-3.875542"/>
+            <coordenada extra="undefined" latlon="40.33673930118343,-3.875405788421631"/>
+            <coordenada extra="undefined" latlon="40.33613411964933,-3.8765108585357666"/>
+            <coordenada extra="undefined" latlon="40.33579063582344,-3.8772189617156982"/>
+            <coordenada extra="undefined" latlon="40.334882848723815,-3.876446485519409"/>
+            <coordenada extra="undefined" latlon="40.33456389360031,-3.877251148223877"/>
+            <coordenada extra="undefined" latlon="40.334,-3.87718"/>
+        </origen>
+    </destino>
+    <destino nombre="Ampliación del Rectorado">
+        <origen extra_init="Está usted en Biblioteca URJC Mostoles" nombre="Biblioteca URJC Mostoles">
+            <coordenada extra=" Está en la biblioteca" latlon="40.337007,-3.875542"/>
+            <coordenada extra=" Ha llegado a su destiño" latlon="40.3373199432287,-3.8753092288970947"/>
+            <coordenada extra="undefined" latlon="40.33757346142778,-3.8744938373565674"/>
+            <coordenada extra="undefined" latlon="40.33776155495996,-3.873775005340576"/>
+            <coordenada extra="undefined" latlon="40.33744206825185,-3.873533606529236"/>
+        </origen>
+    </destino>
+    <destino nombre="Metro">
+		<origen nombre="Departamental II" extra_init="Está usted en el departamental dos, gire a su izquierda por la rampa para empezar la ruta hacia el metro.">
+			<coordenada extra="Siga recto girando levemente hacia su lado derecho" latlon="40.335746,-3.877469"/>
+			<coordenada extra="Acérquese al bordillo de su derecha y continue recto." latlon="40.335883,-3.877081"/>
+			<coordenada extra="Está entre el Departamental uno y el Aulario uno. Continue recto" latlon="40.336134,-3.876504"/>
+			<coordenada extra="Siga recto, se está aproximando a la biblioteca" latlon="40.336398,-3.876013"/>
+			<coordenada extra="Está cerca de la Biblioteca. Continue recto." latlon="40.336594,-3.875617"/>
+			<coordenada extra="Siga recto" latlon="40.336817,-3.875164"/>
+			<coordenada extra="Siga recto, En breves momentos tendrá que girar hacia su derecha" latlon="40.336927,-3.874924"/>
+			<coordenada extra="Gire hacia su derecha" latlon="40.337075,-3.874581"/>
+			<coordenada extra="Siga recto" latlon="40.336752,-3.874468"/>
+			<coordenada extra="Siga recto" latlon="40.336367,-3.87432"/>
+			<coordenada extra="A su derecha está el edificio de gestión, siga recto" latlon="40.336007,-3.874168"/>
+			<coordenada extra="Se está aproximando a la salida de la universidad, siga recto" latlon="40.335623,-3.874028"/>
+			<coordenada extra="Se está aproximando a la salida de la universidad, siga recto." latlon="40.3352,-3.87384"/>
+			<coordenada extra="Está muy próximo a la salida, siga recto pero desvíese ligeramente hacia la derecha para encontrar la puerta de salida" latlon="40.335051,-3.873752"/>
+			<coordenada extra="Ha salido de la universidad, gire a la izquierda y cruce la calle próximo a la valla hasta llegar a la acera y siga después a la derecha" latlon="40.334866,-3.873746"/>
+			<coordenada extra="Continue próximo al bordillo" latlon="40.334859,-3.873633"/>
+			<coordenada extra="Siga recto pegado al bordillo, se acerca a un paso de peatones" latlon="40.334789,-3.873486"/>
+			<coordenada extra="Te aproximas a un paso de peatones, precaución." latlon="40.33476,-3.87324"/>
+			<coordenada extra="Ya ha cruzado, gire levemente hacia su izquierda y después camine recto." latlon="40.334635,-3.872993"/>
+			<coordenada extra="Está en la parada de Metro Universidad Rey Juan Carlos. Ha llegado a su destino" latlon="40.334754,-3.872226"/>
+		</origen>
+	</destino>
+    <destino nombre="Biblioteca">
+		<origen nombre="Departamental II" extra_init="Está usted en el departamental dos, gire a su izquierda por la rampa para empezar la ruta hacia la Biblioteca.">
+		    <coordenada latlon="40.335746,-3.877469" extra="Siga recto girando levemente hacia su lado derecho"/>
+			<coordenada latlon="40.335883,-3.877081" extra="Acérquese al bordillo de su derecha y continue recto."/>
+			<coordenada latlon="40.336134,-3.876504" extra="Está entre el Departamental uno y el Aulario uno. Continue recto"/>
+			<coordenada latlon="40.336355,-3.876111" extra="Siga recto, se está aproximando a la biblioteca."/>
+			<coordenada latlon="40.336549,-3.875751" extra="Está cerca de la Biblioteca. Continue recto. En breves momentos tendrá que girar a su izquierda para llegar a la entrada."/>
+		   	<coordenada latlon="40.336728,-3.875375" extra="Gire a la izquierda noventa grados y continue recto."/>
+		    <coordenada latlon="40.336846,-3.875472" extra="Continue recto desviandose levemente hacia su izquierda para encontrar la pared."/>
+		    <coordenada latlon="40.337007,-3.875542" extra="Ha llegado usted a la Biblioteca. La puerta de entrada se encuentra siguiendo recto a su izquierda"/>
+	    </origen>
+	</destino>	
+    <destino nombre="Departamental I">
+        <origen extra_init="Está usted en Departamental II" nombre="Departamental II">
+            <coordenada
+                extra=" Salga del edificio por la puerta delantera y continue a mano izquierda." latlon="40.335823,-3.877964"/>
+            <coordenada extra="Gire a la izquierda. " latlon="40.335692497266315,-3.877798318862915"/>
+            <coordenada extra=" Entrada del edificio. Bienvenido." latlon="40.33558618033502,-3.8776803016662598"/>
+            <coordenada extra=" " latlon="40.33565978438223,-3.877530097961426"/>
+            <coordenada extra="undefined" latlon="40.335741566562724,-3.8772940635681152"/>
+            <coordenada extra="undefined" latlon="40.33590513062635,-3.877004384994507"/>
+            <coordenada extra="undefined" latlon="40.33604415976869,-3.876596689224243"/>
+            <coordenada extra="undefined" latlon="40.33613411964933,-3.8764357566833496"/>
+            <coordenada extra="undefined" latlon="40.336354929756915,-3.8766181468963623"/>
+            <coordenada extra="undefined" latlon="40.336502,-3.876805"/>
+        </origen>
+    </destino>
+    <destino nombre="Aulario III">
+        <origen extra_init="Está usted en Departamental II" nombre="Departamental II">
+            <coordenada extra="" latlon="40.335823,-3.877964"/>
+            <coordenada extra="" latlon="40.334605,-3.878672"/>
+        </origen>
+    </destino>
+    <destino nombre="Laboratorio II">
+        <origen extra_init="Está usted en Departamental II" nombre="Departamental II">
+            <coordenada extra="" latlon="40.335823,-3.877964"/>
+            <coordenada extra="" latlon="40.33518898971044,-3.877299427986145"/>
+        </origen>
+    </destino>
+    <destino nombre="Laboratorio III">
+        <origen extra_init="Está usted en Departamental II" nombre="Departamental II">
+            <coordenada extra="" latlon="40.335823,-3.877964"/>
+            <coordenada extra="" latlon="40.3345797050947,-3.8784849643707275"/>
+        </origen>
+    </destino>
+    <destino nombre="Edificio de Gestión">
+        <origen extra_init="Está usted en Departamental II" nombre="Departamental II">
+            <coordenada extra="" latlon="40.335823,-3.877964"/>
+            <coordenada extra="" latlon="40.335766,-3.875013"/>
+        </origen>
+    </destino>
+    <destino nombre="Servicio de Deportes">
+        <origen extra_init="Está usted en Departamental II" nombre="Departamental II">
+            <coordenada extra="" latlon="40.335823,-3.877964"/>
+            <coordenada extra="" latlon="40.3344,-3.87718"/>
+        </origen>
+    </destino>
+    <destino nombre="Edificio de REstáuración">
+        <origen extra_init="Está usted en Departamental II" nombre="Departamental II">
+            <coordenada extra="" latlon="40.335823,-3.877964"/>
+            <coordenada extra="" latlon="40.334,-3.87718"/>
+        </origen>
+    </destino>
+    <destino nombre="Aulario III">
+        <origen extra_init="Está usted en Aulario II" nombre="Aulario II">
+            <coordenada extra=" Origen" latlon="40.335243,-3.877491"/>
+            <coordenada extra="Gire a la izquierda. " latlon="40.33547318434429,-3.8776803016662598"/>
+            <coordenada extra="Siga recto. " latlon="40.33485981313485,-3.878892660140991"/>
+            <coordenada extra=" " latlon="40.334605,-3.878672"/>
+        </origen>
+    </destino>
+    <destino nombre="Metro - Universidad Rey Juan Carlos">
+        <origen extra_init="Está usted en Departamental I" nombre="Departamental I">
+            <coordenada extra="" latlon="40.336502,-3.876805"/>
+            <coordenada extra="" latlon="40.334754,-3.872226"/>
+        </origen>
+    </destino>
+    <destino nombre="Departamental II">
+        <origen extra_init="Está usted en Departamental I" nombre="Departamental I">
+            <coordenada extra="" latlon="40.336502,-3.876805"/>
+            <coordenada extra="" latlon="40.335823,-3.877964"/>
+        </origen>
+    </destino>
+    <destino nombre="Laboratorio I">
+        <origen extra_init="Está usted en Departamental I" nombre="Departamental I">
+            <coordenada extra="" latlon="40.336502,-3.876805"/>
+            <coordenada extra="" latlon="40.335826892540354,-3.8761192560195923"/>
+        </origen>
+    </destino>
+    <destino nombre="Aulario III">
+        <origen extra_init="Está usted en Departamental I" nombre="Departamental I">
+            <coordenada extra="" latlon="40.336502,-3.876805"/>
+            <coordenada extra="" latlon="40.334605,-3.878672"/>
+        </origen>
+    </destino>
+    <destino nombre="Laboratorio II">
+        <origen extra_init="Está usted en Departamental I" nombre="Departamental I">
+            <coordenada extra="" latlon="40.336502,-3.876805"/>
+            <coordenada extra="" latlon="40.33518898971044,-3.877299427986145"/>
+        </origen>
+    </destino>
+    <destino nombre="Laboratorio III">
+        <origen extra_init="Está usted en Departamental I" nombre="Departamental I">
+            <coordenada extra="" latlon="40.336502,-3.876805"/>
+            <coordenada extra="" latlon="40.3345797050947,-3.8784849643707275"/>
+        </origen>
+    </destino>
+    <destino nombre="Edificio de Gestión">
+        <origen extra_init="Está usted en Departamental I" nombre="Departamental I">
+            <coordenada extra="" latlon="40.336502,-3.876805"/>
+            <coordenada extra="" latlon="40.335766,-3.875013"/>
+        </origen>
+    </destino>
+    <destino nombre="Servicio de Deportes">
+        <origen extra_init="Está usted en Departamental I" nombre="Departamental I">
+            <coordenada extra="" latlon="40.336502,-3.876805"/>
+            <coordenada extra="" latlon="40.3344,-3.87718"/>
+        </origen>
+    </destino>
+    <destino nombre="Edificio de REstáuración">
+        <origen extra_init="Está usted en Departamental I" nombre="Departamental I">
+            <coordenada extra="" latlon="40.336502,-3.876805"/>
+            <coordenada extra="" latlon="40.334,-3.87718"/>
+        </origen>
+    </destino>
+    <destino nombre="Centro de Apoyo Tecnológico (TAC)">
+        <origen extra_init="Está usted en Departamental I" nombre="Departamental I">
+            <coordenada extra="" latlon="40.336502,-3.876805"/>
+            <coordenada extra="" latlon="40.33442022700495,-3.881945013999939"/>
+        </origen>
+    </destino>
+    <destino nombre="Ampliación del Rectorado">
+        <origen extra_init="Está usted en Departamental I" nombre="Departamental I">
+            <coordenada extra="" latlon="40.336502,-3.876805"/>
+            <coordenada extra="" latlon="40.33744206825185,-3.873533606529236"/>
+        </origen>
+    </destino>
+    <destino nombre="Metro - Universidad Rey Juan Carlos">
+        <origen extra_init="Está usted en Laboratorio I" nombre="Laboratorio I">
+            <coordenada extra="" latlon="40.335826892540354,-3.8761192560195923"/>
+            <coordenada extra="" latlon="40.334754,-3.872226"/>
+        </origen>
+    </destino>
+    <destino nombre="Departamental I">
+        <origen extra_init="Está usted en Laboratorio I" nombre="Laboratorio I">
+            <coordenada extra="" latlon="40.335826892540354,-3.8761192560195923"/>
+            <coordenada extra="" latlon="40.336502,-3.876805"/>
+        </origen>
+    </destino>
+    <destino nombre="Laboratorio III">
+        <origen extra_init="Está usted en Laboratorio I" nombre="Laboratorio I">
+            <coordenada extra="" latlon="40.335826892540354,-3.8761192560195923"/>
+            <coordenada extra="" latlon="40.3345797050947,-3.8784849643707275"/>
+        </origen>
+    </destino>
+    <destino nombre="Edificio de Gestión">
+        <origen extra_init="Está usted en Laboratorio I" nombre="Laboratorio I">
+            <coordenada extra="" latlon="40.335826892540354,-3.8761192560195923"/>
+            <coordenada extra="" latlon="40.335766,-3.875013"/>
+        </origen>
+    </destino>
+    <destino nombre="Servicio de Deportes">
+        <origen extra_init="Está usted en Laboratorio I" nombre="Laboratorio I">
+            <coordenada extra="" latlon="40.335826892540354,-3.8761192560195923"/>
+            <coordenada extra="" latlon="40.3344,-3.87718"/>
+        </origen>
+    </destino>
+    <destino nombre="Edificio de REstáuración">
+        <origen extra_init="Está usted en Laboratorio I" nombre="Laboratorio I">
+            <coordenada extra="" latlon="40.335826892540354,-3.8761192560195923"/>
+            <coordenada extra="" latlon="40.334,-3.87718"/>
+        </origen>
+    </destino>
+    <destino nombre="Centro de Apoyo Tecnológico (TAC)">
+        <origen extra_init="Está usted en Laboratorio I" nombre="Laboratorio I">
+            <coordenada extra="" latlon="40.335826892540354,-3.8761192560195923"/>
+            <coordenada extra="" latlon="40.33442022700495,-3.881945013999939"/>
+        </origen>
+    </destino>
+    <destino nombre="Ampliación del Rectorado">
+        <origen extra_init="Está usted en Laboratorio I" nombre="Laboratorio I">
+            <coordenada extra="" latlon="40.335826892540354,-3.8761192560195923"/>
+            <coordenada extra="" latlon="40.33744206825185,-3.873533606529236"/>
+        </origen>
+    </destino>
+    <destino nombre="Departamental II">
+        <origen extra_init="Está usted en Aulario III" nombre="Aulario III">
+            <coordenada extra="" latlon="40.334605,-3.878672"/>
+            <coordenada extra="" latlon="40.335823,-3.877964"/>
+        </origen>
+    </destino>
+    <destino nombre="Aulario II">
+        <origen extra_init="Está usted en Aulario III" nombre="Aulario III">
+            <coordenada extra="" latlon="40.334605,-3.878672"/>
+            <coordenada extra="" latlon="40.335243,-3.877491"/>
+        </origen>
+    </destino>
+    <destino nombre="Departamental I">
+        <origen extra_init="Está usted en Aulario III" nombre="Aulario III">
+            <coordenada extra="" latlon="40.334605,-3.878672"/>
+            <coordenada extra="" latlon="40.336502,-3.876805"/>
+        </origen>
+    </destino>
+    <destino nombre="Laboratorio II">
+        <origen extra_init="Está usted en Aulario III" nombre="Aulario III">
+            <coordenada extra="" latlon="40.334605,-3.878672"/>
+            <coordenada extra="" latlon="40.33518898971044,-3.877299427986145"/>
+        </origen>
+    </destino>
+    <destino nombre="Laboratorio III">
+        <origen extra_init="Está usted en Aulario III" nombre="Aulario III">
+            <coordenada extra="" latlon="40.334605,-3.878672"/>
+            <coordenada extra="" latlon="40.3345797050947,-3.8784849643707275"/>
+        </origen>
+    </destino>
+    <destino nombre="Edificio de Gestión">
+        <origen extra_init="Está usted en Aulario III" nombre="Aulario III">
+            <coordenada extra="" latlon="40.334605,-3.878672"/>
+            <coordenada extra="" latlon="40.335766,-3.875013"/>
+        </origen>
+    </destino>
+    <destino nombre="Servicio de Deportes">
+        <origen extra_init="Está usted en Aulario III" nombre="Aulario III">
+            <coordenada extra="" latlon="40.334605,-3.878672"/>
+            <coordenada extra="" latlon="40.3344,-3.87718"/>
+        </origen>
+    </destino>
+    <destino nombre="Edificio de REstáuración">
+        <origen extra_init="Está usted en Aulario III" nombre="Aulario III">
+            <coordenada extra="" latlon="40.334605,-3.878672"/>
+            <coordenada extra="" latlon="40.334,-3.87718"/>
+        </origen>
+    </destino>
+    <destino nombre="Departamental II">
+        <origen extra_init="Está usted en Laboratorio II" nombre="Laboratorio II">
+            <coordenada extra="" latlon="40.33518898971044,-3.877299427986145"/>
+            <coordenada extra="" latlon="40.335823,-3.877964"/>
+        </origen>
+    </destino>
+    <destino nombre="Departamental I">
+        <origen extra_init="Está usted en Laboratorio II" nombre="Laboratorio II">
+            <coordenada extra="" latlon="40.33518898971044,-3.877299427986145"/>
+            <coordenada extra="" latlon="40.336502,-3.876805"/>
+        </origen>
+    </destino>
+    <destino nombre="Aulario III">
+        <origen extra_init="Está usted en Laboratorio II" nombre="Laboratorio II">
+            <coordenada extra="" latlon="40.33518898971044,-3.877299427986145"/>
+            <coordenada extra="" latlon="40.334605,-3.878672"/>
+        </origen>
+    </destino>
+    <destino nombre="Laboratorio III">
+        <origen extra_init="Está usted en Laboratorio II" nombre="Laboratorio II">
+            <coordenada extra="" latlon="40.33518898971044,-3.877299427986145"/>
+            <coordenada extra="" latlon="40.3345797050947,-3.8784849643707275"/>
+        </origen>
+    </destino>
+    <destino nombre="Edificio de Gestión">
+        <origen extra_init="Está usted en Laboratorio II" nombre="Laboratorio II">
+            <coordenada extra="" latlon="40.33518898971044,-3.877299427986145"/>
+            <coordenada extra="" latlon="40.335766,-3.875013"/>
+        </origen>
+    </destino>
+    <destino nombre="Servicio de Deportes">
+        <origen extra_init="Está usted en Laboratorio II" nombre="Laboratorio II">
+            <coordenada extra="" latlon="40.33518898971044,-3.877299427986145"/>
+            <coordenada extra="" latlon="40.3344,-3.87718"/>
+        </origen>
+    </destino>
+    <destino nombre="Edificio de REstáuración">
+        <origen extra_init="Está usted en Laboratorio II" nombre="Laboratorio II">
+            <coordenada extra="" latlon="40.33518898971044,-3.877299427986145"/>
+            <coordenada extra="" latlon="40.334,-3.87718"/>
+        </origen>
+    </destino>
+    <destino nombre="Metro - Universidad Rey Juan Carlos">
+        <origen extra_init="Está usted en Laboratorio III" nombre="Laboratorio III">
+            <coordenada extra="" latlon="40.3345797050947,-3.8784849643707275"/>
+            <coordenada extra="" latlon="40.334754,-3.872226"/>
+        </origen>
+    </destino>
+    <destino nombre="Departamental II">
+        <origen extra_init="Está usted en Laboratorio III" nombre="Laboratorio III">
+            <coordenada extra="" latlon="40.3345797050947,-3.8784849643707275"/>
+            <coordenada extra="" latlon="40.335823,-3.877964"/>
+        </origen>
+    </destino>
+    <destino nombre="Departamental I">
+        <origen extra_init="Está usted en Laboratorio III" nombre="Laboratorio III">
+            <coordenada extra="" latlon="40.3345797050947,-3.8784849643707275"/>
+            <coordenada extra="" latlon="40.336502,-3.876805"/>
+        </origen>
+    </destino>
+    <destino nombre="Laboratorio I">
+        <origen extra_init="Está usted en Laboratorio III" nombre="Laboratorio III">
+            <coordenada extra="" latlon="40.3345797050947,-3.8784849643707275"/>
+            <coordenada extra="" latlon="40.335826892540354,-3.8761192560195923"/>
+        </origen>
+    </destino>
+    <destino nombre="Aulario III">
+        <origen extra_init="Está usted en Laboratorio III" nombre="Laboratorio III">
+            <coordenada extra="" latlon="40.3345797050947,-3.8784849643707275"/>
+            <coordenada extra="" latlon="40.334605,-3.878672"/>
+        </origen>
+    </destino>
+    <destino nombre="Laboratorio II">
+        <origen extra_init="Está usted en Laboratorio III" nombre="Laboratorio III">
+            <coordenada extra="" latlon="40.3345797050947,-3.8784849643707275"/>
+            <coordenada extra="" latlon="40.33518898971044,-3.877299427986145"/>
+        </origen>
+    </destino>
+    <destino nombre="Edificio de Gestión">
+        <origen extra_init="Está usted en Laboratorio III" nombre="Laboratorio III">
+            <coordenada extra="" latlon="40.3345797050947,-3.8784849643707275"/>
+            <coordenada extra="" latlon="40.335766,-3.875013"/>
+        </origen>
+    </destino>
+    <destino nombre="Servicio de Deportes">
+        <origen extra_init="Está usted en Laboratorio III" nombre="Laboratorio III">
+            <coordenada extra="" latlon="40.3345797050947,-3.8784849643707275"/>
+            <coordenada extra="" latlon="40.3344,-3.87718"/>
+        </origen>
+    </destino>
+    <destino nombre="Edificio de REstáuración">
+        <origen extra_init="Está usted en Laboratorio III" nombre="Laboratorio III">
+            <coordenada extra="" latlon="40.3345797050947,-3.8784849643707275"/>
+            <coordenada extra="" latlon="40.334,-3.87718"/>
+        </origen>
+    </destino>
+    <destino nombre="Centro de Apoyo Tecnológico (TAC)">
+        <origen extra_init="Está usted en Laboratorio III" nombre="Laboratorio III">
+            <coordenada extra="" latlon="40.3345797050947,-3.8784849643707275"/>
+            <coordenada extra="" latlon="40.33442022700495,-3.881945013999939"/>
+        </origen>
+    </destino>
+    <destino nombre="Ampliación del Rectorado">
+        <origen extra_init="Está usted en Laboratorio III" nombre="Laboratorio III">
+            <coordenada extra="" latlon="40.3345797050947,-3.8784849643707275"/>
+            <coordenada extra="" latlon="40.33744206825185,-3.873533606529236"/>
+        </origen>
+    </destino>
+    <destino nombre="Metro - Universidad Rey Juan Carlos">
+        <origen extra_init="Está usted en Edificio de Gestión" nombre="Edificio de Gestión">
+            <coordenada extra="" latlon="40.335766,-3.875013"/>
+            <coordenada extra="" latlon="40.334754,-3.872226"/>
+        </origen>
+    </destino>
+    <destino nombre="Departamental II">
+        <origen extra_init="Está usted en Edificio de Gestión" nombre="Edificio de Gestión">
+            <coordenada extra="" latlon="40.335766,-3.875013"/>
+            <coordenada extra="" latlon="40.335823,-3.877964"/>
+        </origen>
+    </destino>
+    <destino nombre="Departamental I">
+        <origen extra_init="Está usted en Edificio de Gestión" nombre="Edificio de Gestión">
+            <coordenada extra="" latlon="40.335766,-3.875013"/>
+            <coordenada extra="" latlon="40.336502,-3.876805"/>
+        </origen>
+    </destino>
+    <destino nombre="Laboratorio I">
+        <origen extra_init="Está usted en Edificio de Gestión" nombre="Edificio de Gestión">
+            <coordenada extra="" latlon="40.335766,-3.875013"/>
+            <coordenada extra="" latlon="40.335826892540354,-3.8761192560195923"/>
+        </origen>
+    </destino>
+    <destino nombre="Aulario III">
+        <origen extra_init="Está usted en Edificio de Gestión" nombre="Edificio de Gestión">
+            <coordenada extra="" latlon="40.335766,-3.875013"/>
+            <coordenada extra="" latlon="40.334605,-3.878672"/>
+        </origen>
+    </destino>
+    <destino nombre="Laboratorio II">
+        <origen extra_init="Está usted en Edificio de Gestión" nombre="Edificio de Gestión">
+            <coordenada extra="" latlon="40.335766,-3.875013"/>
+            <coordenada extra="" latlon="40.33518898971044,-3.877299427986145"/>
+        </origen>
+    </destino>
+    <destino nombre="Laboratorio III">
+        <origen extra_init="Está usted en Edificio de Gestión" nombre="Edificio de Gestión">
+            <coordenada extra="" latlon="40.335766,-3.875013"/>
+            <coordenada extra="" latlon="40.3345797050947,-3.8784849643707275"/>
+        </origen>
+    </destino>
+    <destino nombre="Servicio de Deportes">
+        <origen extra_init="Está usted en Edificio de Gestión" nombre="Edificio de Gestión">
+            <coordenada extra="" latlon="40.335766,-3.875013"/>
+            <coordenada extra="" latlon="40.3344,-3.87718"/>
+        </origen>
+    </destino>
+    <destino nombre="Edificio de REstáuración">
+        <origen extra_init="Está usted en Edificio de Gestión" nombre="Edificio de Gestión">
+            <coordenada extra="" latlon="40.335766,-3.875013"/>
+            <coordenada extra="" latlon="40.334,-3.87718"/>
+        </origen>
+    </destino>
+    <destino nombre="Centro de Apoyo Tecnológico (TAC)">
+        <origen extra_init="Está usted en Edificio de Gestión" nombre="Edificio de Gestión">
+            <coordenada extra="" latlon="40.335766,-3.875013"/>
+            <coordenada extra="" latlon="40.33442022700495,-3.881945013999939"/>
+        </origen>
+    </destino>
+    <destino nombre="Ampliación del Rectorado">
+        <origen extra_init="Está usted en Edificio de Gestión" nombre="Edificio de Gestión">
+            <coordenada extra="" latlon="40.335766,-3.875013"/>
+            <coordenada extra="" latlon="40.33744206825185,-3.873533606529236"/>
+        </origen>
+    </destino>
+    <destino nombre="Metro - Universidad Rey Juan Carlos">
+        <origen extra_init="Está usted en Servicio de Deportes" nombre="Servicio de Deportes">
+            <coordenada extra="" latlon="40.3344,-3.87718"/>
+            <coordenada extra="" latlon="40.334754,-3.872226"/>
+        </origen>
+    </destino>
+    <destino nombre="Departamental II">
+        <origen extra_init="Está usted en Servicio de Deportes" nombre="Servicio de Deportes">
+            <coordenada extra="" latlon="40.3344,-3.87718"/>
+            <coordenada extra="" latlon="40.335823,-3.877964"/>
+        </origen>
+    </destino>
+    <destino nombre="Departamental I">
+        <origen extra_init="Está usted en Servicio de Deportes" nombre="Servicio de Deportes">
+            <coordenada extra="" latlon="40.3344,-3.87718"/>
+            <coordenada extra="" latlon="40.336502,-3.876805"/>
+        </origen>
+    </destino>
+    <destino nombre="Laboratorio I">
+        <origen extra_init="Está usted en Servicio de Deportes" nombre="Servicio de Deportes">
+            <coordenada extra="" latlon="40.3344,-3.87718"/>
+            <coordenada extra="" latlon="40.335826892540354,-3.8761192560195923"/>
+        </origen>
+    </destino>
+    <destino nombre="Aulario III">
+        <origen extra_init="Está usted en Servicio de Deportes" nombre="Servicio de Deportes">
+            <coordenada extra="" latlon="40.3344,-3.87718"/>
+            <coordenada extra="" latlon="40.334605,-3.878672"/>
+        </origen>
+    </destino>
+    <destino nombre="Laboratorio II">
+        <origen extra_init="Está usted en Servicio de Deportes" nombre="Servicio de Deportes">
+            <coordenada extra="" latlon="40.3344,-3.87718"/>
+            <coordenada extra="" latlon="40.33518898971044,-3.877299427986145"/>
+        </origen>
+    </destino>
+    <destino nombre="Laboratorio III">
+        <origen extra_init="Está usted en Servicio de Deportes" nombre="Servicio de Deportes">
+            <coordenada extra="" latlon="40.3344,-3.87718"/>
+            <coordenada extra="" latlon="40.3345797050947,-3.8784849643707275"/>
+        </origen>
+    </destino>
+    <destino nombre="Edificio de Gestión">
+        <origen extra_init="Está usted en Servicio de Deportes" nombre="Servicio de Deportes">
+            <coordenada extra="" latlon="40.3344,-3.87718"/>
+            <coordenada extra="" latlon="40.335766,-3.875013"/>
+        </origen>
+    </destino>
+    <destino nombre="Edificio de REstáuración">
+        <origen extra_init="Está usted en Servicio de Deportes" nombre="Servicio de Deportes">
+            <coordenada extra="" latlon="40.3344,-3.87718"/>
+            <coordenada extra="" latlon="40.334,-3.87718"/>
+        </origen>
+    </destino>
+    <destino nombre="Centro de Apoyo Tecnológico (TAC)">
+        <origen extra_init="Está usted en Servicio de Deportes" nombre="Servicio de Deportes">
+            <coordenada extra="" latlon="40.3344,-3.87718"/>
+            <coordenada extra="" latlon="40.33442022700495,-3.881945013999939"/>
+        </origen>
+    </destino>
+    <destino nombre="Ampliación del Rectorado">
+        <origen extra_init="Está usted en Servicio de Deportes" nombre="Servicio de Deportes">
+            <coordenada extra="" latlon="40.3344,-3.87718"/>
+            <coordenada extra="" latlon="40.33744206825185,-3.873533606529236"/>
+        </origen>
+    </destino>
+    <destino nombre="Metro - Universidad Rey Juan Carlos">
+        <origen extra_init="Está usted en Edificio de REstáuración" nombre="Edificio de REstáuración">
+            <coordenada extra="" latlon="40.334,-3.87718"/>
+            <coordenada extra="" latlon="40.334754,-3.872226"/>
+        </origen>
+    </destino>
+    <destino nombre="Biblioteca URJC Mostoles">
+        <origen extra_init="Está usted en Edificio de REstáuración" nombre="Edificio de REstáuración">
+            <coordenada extra=" Está en el edificio de rEstáuración" latlon="40.334,-3.87718"/>
+            <coordenada extra=" Ha llegado a su destino" latlon="40.33460478536706,-3.8772404193878174"/>
+            <coordenada extra="undefined" latlon="40.33483377880292,-3.876500129699707"/>
+            <coordenada extra="undefined" latlon="40.33583152684678,-3.877197504043579"/>
+            <coordenada extra="undefined" latlon="40.33617501046448,-3.8765323162078857"/>
+            <coordenada extra="undefined" latlon="40.33655938291595,-3.8758134841918945"/>
+            <coordenada extra="undefined" latlon="40.3367965478043,-3.8753199577331543"/>
+            <coordenada extra="undefined" latlon="40.337007,-3.875542"/>
+        </origen>
+    </destino>
+    <destino nombre="Departamental II">
+        <origen extra_init="Está usted en Edificio de REstáuración" nombre="Edificio de REstáuración">
+            <coordenada extra="" latlon="40.334,-3.87718"/>
+            <coordenada extra="" latlon="40.335823,-3.877964"/>
+        </origen>
+    </destino>
+    <destino nombre="Departamental I">
+        <origen extra_init="Está usted en Edificio de REstáuración" nombre="Edificio de REstáuración">
+            <coordenada extra="" latlon="40.334,-3.87718"/>
+            <coordenada extra="" latlon="40.336502,-3.876805"/>
+        </origen>
+    </destino>
+    <destino nombre="Laboratorio I">
+        <origen extra_init="Está usted en Edificio de REstáuración" nombre="Edificio de REstáuración">
+            <coordenada extra="" latlon="40.334,-3.87718"/>
+            <coordenada extra="" latlon="40.335826892540354,-3.8761192560195923"/>
+        </origen>
+    </destino>
+    <destino nombre="Aulario III">
+        <origen extra_init="Está usted en Edificio de REstáuración" nombre="Edificio de REstáuración">
+            <coordenada extra="" latlon="40.334,-3.87718"/>
+            <coordenada extra="" latlon="40.334605,-3.878672"/>
+        </origen>
+    </destino>
+    <destino nombre="Laboratorio II">
+        <origen extra_init="Está usted en Edificio de REstáuración" nombre="Edificio de REstáuración">
+            <coordenada extra="" latlon="40.334,-3.87718"/>
+            <coordenada extra="" latlon="40.33518898971044,-3.877299427986145"/>
+        </origen>
+    </destino>
+    <destino nombre="Laboratorio III">
+        <origen extra_init="Está usted en Edificio de REstáuración" nombre="Edificio de REstáuración">
+            <coordenada extra="" latlon="40.334,-3.87718"/>
+            <coordenada extra="" latlon="40.3345797050947,-3.8784849643707275"/>
+        </origen>
+    </destino>
+    <destino nombre="Edificio de Gestión">
+        <origen extra_init="Está usted en Edificio de REstáuración" nombre="Edificio de REstáuración">
+            <coordenada extra="" latlon="40.334,-3.87718"/>
+            <coordenada extra="" latlon="40.335766,-3.875013"/>
+        </origen>
+    </destino>
+    <destino nombre="Servicio de Deportes">
+        <origen extra_init="Está usted en Edificio de REstáuración" nombre="Edificio de REstáuración">
+            <coordenada extra="" latlon="40.334,-3.87718"/>
+            <coordenada extra="" latlon="40.3344,-3.87718"/>
+        </origen>
+    </destino>
+    <destino nombre="Centro de Apoyo Tecnológico (TAC)">
+        <origen extra_init="Está usted en Edificio de REstáuración" nombre="Edificio de REstáuración">
+            <coordenada extra="" latlon="40.334,-3.87718"/>
+            <coordenada extra="" latlon="40.33442022700495,-3.881945013999939"/>
+        </origen>
+    </destino>
+    <destino nombre="Ampliación del Rectorado">
+        <origen extra_init="Está usted en Edificio de REstáuración" nombre="Edificio de REstáuración">
+            <coordenada extra=" Está en el edificio de rEstáuración" latlon="40.334,-3.87718"/>
+            <coordenada extra=" Ha llegado a su destino" latlon="40.33457207195564,-3.8772404193878174"/>
+            <coordenada extra="undefined" latlon="40.334964631845956,-3.8762855529785156"/>
+            <coordenada extra="undefined" latlon="40.335422615498246,-3.875126838684082"/>
+            <coordenada extra="undefined" latlon="40.3352345154458,-3.8749337196350098"/>
+            <coordenada extra="undefined" latlon="40.335561645634805,-3.8743436336517334"/>
+            <coordenada extra="undefined" latlon="40.33632221719397,-3.8746440410614014"/>
+            <coordenada extra="undefined" latlon="40.337090958230114,-3.874558210372925"/>
+            <coordenada extra="undefined" latlon="40.33744206825185,-3.873533606529236"/>
+        </origen>
+    </destino>
+    <destino nombre="Metro - Universidad Rey Juan Carlos">
+        <origen
+            extra_init="Está usted en Centro de Apoyo Tecnológico (TAC)" nombre="Centro de Apoyo Tecnológico (TAC)">
+            <coordenada extra="" latlon="40.33442022700495,-3.881945013999939"/>
+            <coordenada extra="" latlon="40.334754,-3.872226"/>
+        </origen>
+    </destino>
+    <destino nombre="Departamental I">
+        <origen
+            extra_init="Está usted en Centro de Apoyo Tecnológico (TAC)" nombre="Centro de Apoyo Tecnológico (TAC)">
+            <coordenada extra="" latlon="40.33442022700495,-3.881945013999939"/>
+            <coordenada extra="" latlon="40.336502,-3.876805"/>
+        </origen>
+    </destino>
+    <destino nombre="Laboratorio I">
+        <origen
+            extra_init="Está usted en Centro de Apoyo Tecnológico (TAC)" nombre="Centro de Apoyo Tecnológico (TAC)">
+            <coordenada extra="" latlon="40.33442022700495,-3.881945013999939"/>
+            <coordenada extra="" latlon="40.335826892540354,-3.8761192560195923"/>
+        </origen>
+    </destino>
+    <destino nombre="Laboratorio III">
+        <origen
+            extra_init="Está usted en Centro de Apoyo Tecnológico (TAC)" nombre="Centro de Apoyo Tecnológico (TAC)">
+            <coordenada extra="" latlon="40.33442022700495,-3.881945013999939"/>
+            <coordenada extra="" latlon="40.3345797050947,-3.8784849643707275"/>
+        </origen>
+    </destino>
+    <destino nombre="Edificio de Gestión">
+        <origen
+            extra_init="Está usted en Centro de Apoyo Tecnológico (TAC)" nombre="Centro de Apoyo Tecnológico (TAC)">
+            <coordenada extra="" latlon="40.33442022700495,-3.881945013999939"/>
+            <coordenada extra="" latlon="40.335766,-3.875013"/>
+        </origen>
+    </destino>
+    <destino nombre="Servicio de Deportes">
+        <origen
+            extra_init="Está usted en Centro de Apoyo Tecnológico (TAC)" nombre="Centro de Apoyo Tecnológico (TAC)">
+            <coordenada extra="" latlon="40.33442022700495,-3.881945013999939"/>
+            <coordenada extra="" latlon="40.3344,-3.87718"/>
+        </origen>
+    </destino>
+    <destino nombre="Edificio de REstáuración">
+        <origen
+            extra_init="Está usted en Centro de Apoyo Tecnológico (TAC)" nombre="Centro de Apoyo Tecnológico (TAC)">
+            <coordenada extra="" latlon="40.33442022700495,-3.881945013999939"/>
+            <coordenada extra="" latlon="40.334,-3.87718"/>
+        </origen>
+    </destino>
+    <destino nombre="Ampliación del Rectorado">
+        <origen
+            extra_init="Está usted en Centro de Apoyo Tecnológico (TAC)" nombre="Centro de Apoyo Tecnológico (TAC)">
+            <coordenada extra="" latlon="40.33442022700495,-3.881945013999939"/>
+            <coordenada extra="" latlon="40.33744206825185,-3.873533606529236"/>
+        </origen>
+    </destino>
+    <destino nombre="Metro - Universidad Rey Juan Carlos">
+        <origen extra_init="Está usted en Ampliación del Rectorado" nombre="Ampliación del Rectorado">
+            <coordenada extra="" latlon="40.33744206825185,-3.873533606529236"/>
+            <coordenada extra="" latlon="40.334754,-3.872226"/>
+        </origen>
+    </destino>
+    <destino nombre="Biblioteca URJC Mostoles">
+        <origen extra_init="Está usted en Ampliación del Rectorado" nombre="Ampliación del Rectorado">
+            <coordenada extra=" Está en ampliación de rectorado" latlon="40.33744206825185,-3.873533606529236"/>
+            <coordenada extra=" Ha llegado a su destino" latlon="40.33738536737127,-3.874880075454712"/>
+        </origen>
+    </destino>
+    <destino nombre="Departamental I">
+        <origen extra_init="Está usted en Ampliación del Rectorado" nombre="Ampliación del Rectorado">
+            <coordenada extra="" latlon="40.33744206825185,-3.873533606529236"/>
+            <coordenada extra="" latlon="40.336502,-3.876805"/>
+        </origen>
+    </destino>
+    <destino nombre="Laboratorio I">
+        <origen extra_init="Está usted en Ampliación del Rectorado" nombre="Ampliación del Rectorado">
+            <coordenada extra="" latlon="40.33744206825185,-3.873533606529236"/>
+            <coordenada extra="" latlon="40.335826892540354,-3.8761192560195923"/>
+        </origen>
+    </destino>
+    <destino nombre="Laboratorio III">
+        <origen extra_init="Está usted en Ampliación del Rectorado" nombre="Ampliación del Rectorado">
+            <coordenada extra="" latlon="40.33744206825185,-3.873533606529236"/>
+            <coordenada extra="" latlon="40.3345797050947,-3.8784849643707275"/>
+        </origen>
+    </destino>
+    <destino nombre="Edificio de Gestión">
+        <origen extra_init="Está usted en Ampliación del Rectorado" nombre="Ampliación del Rectorado">
+            <coordenada extra="" latlon="40.33744206825185,-3.873533606529236"/>
+            <coordenada extra="" latlon="40.335766,-3.875013"/>
+        </origen>
+    </destino>
+    <destino nombre="Servicio de Deportes">
+        <origen extra_init="Está usted en Ampliación del Rectorado" nombre="Ampliación del Rectorado">
+            <coordenada extra="" latlon="40.33744206825185,-3.873533606529236"/>
+            <coordenada extra="" latlon="40.3344,-3.87718"/>
+        </origen>
+    </destino>
+    <destino nombre="Edificio de REstáuración">
+        <origen extra_init="Está usted en Ampliación del Rectorado" nombre="Ampliación del Rectorado">
+            <coordenada extra=" Está en ampliación de rectorado" latlon="40.33744206825185,-3.873533606529236"/>
+            <coordenada extra=" Ha llegado a su destino" latlon="40.33708278018006,-3.8746118545532227"/>
+            <coordenada extra="undefined" latlon="40.33602780341386,-3.874204158782959"/>
+            <coordenada extra="undefined" latlon="40.33546350674463,-3.8745474815368652"/>
+            <coordenada extra="undefined" latlon="40.335267228536054,-3.8750088214874268"/>
+            <coordenada extra="undefined" latlon="40.33541443724601,-3.875148296356201"/>
+            <coordenada extra="undefined" latlon="40.33498916676329,-3.876221179962158"/>
+            <coordenada extra="undefined" latlon="40.3345966070157,-3.8772404193878174"/>
+            <coordenada extra="undefined" latlon="40.334,-3.87718"/>
+        </origen>
+    </destino>
+    <destino nombre="Centro de Apoyo Tecnológico (TAC)">
+        <origen extra_init="Está usted en Ampliación del Rectorado" nombre="Ampliación del Rectorado">
+            <coordenada extra="" latlon="40.33744206825185,-3.873533606529236"/>
+            <coordenada extra="" latlon="40.33442022700495,-3.881945013999939"/>
+        </origen>
+    </destino>
+    <destino nombre="Aulario I">
+		<origen nombre="Departamental II" extra_init="Gire a su izquierda para empezar la ruta hacia el Aulario uno">
+		    <coordenada latlon="40.335763,-3.877452" extra="Siga recto girando cuarenta y cinco grados hacia su lado derecho"/>
+			<coordenada latlon="40.335768,-3.877438" extra="Siga recto girando cuarenta y cinco grados hacia su lado derecho"/>
+			<coordenada latlon="40.335824,-3.877218" extra="Acérquese al bordillo de su derecha y continue recto."/>
+			<coordenada latlon="40.335868,-3.877136" extra="Acérquese al bordillo de su derecha y continue recto."/>
+			<coordenada latlon="40.335952,-3.876942" extra="Continúe recto pegado al bordillo de su derecha"/>
+			<coordenada latlon="40.335989,-3.876889" extra="Continúe recto pegado al bordillo de su derecha"/>
+			<coordenada latlon="40.336144,-3.87656" extra="Gire noventa grados a su derecha y continue recto. Está entre el Departamental uno y el Aulario uno."/>
+			<coordenada latlon="40.336178,-3.876504" extra="Gire noventa grados a su derecha y continue recto. Está entre el Departamental uno y el Aulario uno."/>
+			<coordenada latlon="40.33651,-3.875841" extra="Punto Auxiliar"/>
+			<coordenada latlon="40.335964,-3.8764" extra="Siga recto desplazándose levemente hacia su derecha hasta encontrar la pared, en 50 metros ha llegado a la puerta de su destino Aulario 1"/>	
+			<coordenada latlon="40.335927,-3.876398" extra="Siga recto desplazándose levemente hacia su derecha hasta encontrar la pared, en 50 metros ha llegado a la puerta de su destino Aulario 1"/>	
+		</origen>	
+	</destino>
+	<destino nombre="Edificio de Restauración">
+		<origen nombre="Departamental II">
+            <coordenada latlon="40.3352,-3.877456" extra="Punto 1"/>
+            <coordenada latlon="40.33494,-3.877263" extra="Punto 2"/>
+            <coordenada latlon="40.334774,-3.877226" extra="Punto 3"/>
+            <coordenada latlon="40.334603,-3.87725" extra="Punto 4"/>
+            <coordenada latlon="40.334388,-3.877239" extra="Punto 5"/>
+        </origen>
+	</destino>
+	<destino nombre="Departamental II">
+		<origen nombre="Aulario I" extra_init="De espaldas al aulario 1, gire a su izquierda para empezar la ruta hacia el Departamental 2">
+			<coordenada extra="Está entre el Departamental uno y el Aulario uno. Gire noventa grados a su izquierda para llegar al Departamental 2 y continue andando pegado al bordillo de su derecha" latlon="40.336115,-3.876543"/>
+			<coordenada extra="Está entre el Departamental uno y el Aulario uno. Gire noventa grados a su izquierda para llegar al Departamental 2 y continue andando pegado al bordillo de su derecha" latlon="40.336151,-3.876568"/>
+			<coordenada extra="Continue recto pegado al bordillo de su derecha." latlon="40.336028,-3.876815"/>
+			<coordenada extra="Continue recto pegado al bordillo de su derecha, próximamente deberá girar cuarenta y cinco grados hacia la derecha." latlon="40.335926,-3.876999"/>
+			<coordenada extra="Gire cuarenta y cinco grados hacia su derecha por la rampa para llegar a su destino" latlon="40.335744,-3.877424"/>
+			<coordenada extra="Gire cuarenta y cinco grados hacia su derecha por la rampa para llegar a su destino"  latlon="40.335733,-3.877448"/>
+			<coordenada extra="Está usted en Departamental dos, a noventa grados a su derecha tiene la puerta de entrada. Ha llegado a su destino" latlon="40.335586,-3.877769"/>
+			<coordenada extra="Está usted en Departamental dos, a noventa grados a su derecha tiene la puerta de entrada. Ha llegado a su destino" latlon="40.335588,-3.877782"/>
+		</origen>	
+	</destino>
+	
+</rutas>

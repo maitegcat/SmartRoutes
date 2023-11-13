@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	android:layout_width="fill_parent"
+	android:layout_height="match_parent"
+	xmlns:tools="http://schemas.android.com/tools"
+	android:orientation="horizontal"
+	android:layout_gravity="center_horizontal"
+	android:background="@color/colorPrimaryDark">
+
+	<ImageButton android:id="@+id/volver"
+        android:layout_width="wrap_content"
+    	android:layout_height="wrap_content"
+		android:background="@drawable/btn_back1"
+		android:paddingLeft="10dp"
+		android:textSize="10dip"
+    	android:contentDescription="Back"
+    	android:clickable="true"
+    	android:text="@string/Backbotton"/>
+	<TextView
+		android:id="@+id/textView"
+		android:textSize="20dip"
+		android:paddingLeft="5dp"
+		android:paddingTop="5dp"
+		android:textColor="@color/letra_blanca"
+		android:fontFamily="@font/montserrat"
+		android:text="Rutas de Exteriores"
+		android:contentDescription="bottonbackindoor "
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		/>
+
+
+
+</LinearLayout>

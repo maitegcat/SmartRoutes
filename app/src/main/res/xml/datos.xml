@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<table name="baliza">
+        <dato>
+            <name>Usuario 1</name>
+            <coor_x>25</coor_x>
+            <coor_y>usuario1@example.com</coor_y>
+            <codletra>usuario1@example.com</codletra>
+        </dato>
+    <dato>
+        <name>Usuario 1</name>
+        <coor_x>25</coor_x>
+        <coor_y>usuario1@example.com</coor_y>
+        <codletra>usuario1@example.com</codletra>
+    </dato>
+
+    </table>
