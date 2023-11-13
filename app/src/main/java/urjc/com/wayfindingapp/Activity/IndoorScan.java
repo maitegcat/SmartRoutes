@@ -386,6 +386,7 @@ public class IndoorScan extends AppCompatActivity implements DialogoConfig.Confi
                 }
                 break;
             }
+
         }
     }
 
@@ -429,7 +430,7 @@ public class IndoorScan extends AppCompatActivity implements DialogoConfig.Confi
       //   } else
       //      txt_coord.setText( coord );
         if (nom_lugar.indexOf( "L" ) == 0) {
-            llenarLista( info_aula, 3 );
+            llenarLista( info_aula, 2);
         } else if (nom_lugar.indexOf( "P" ) == 0) {
             desc = "\n" + nom_lugar.split( "\n" )[1];
             llenarLista( info_aula, 1 );
