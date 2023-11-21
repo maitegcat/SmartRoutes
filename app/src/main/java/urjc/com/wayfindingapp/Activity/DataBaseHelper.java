@@ -27,7 +27,7 @@ public class DataBaseHelper extends SQLiteOpenHelper {
     String Typeplace = "CREATE TABLE Typeplace (IDTypeplace INTEGER PRIMARY KEY AUTOINCREMENT,NAME TEXT NOT NULL,DESCRIPCION TEXT NOT NULL)";
     String Dis_baliza = "CREATE TABLE Dis_baliza (IDdistancia_baliza INTEGER PRIMARY KEY AUTOINCREMENT,Value TEXT NOT NULL,Baliza_a INTEGER NOT NULL,Baliza_b INTEGER NOT NULL, Baliza_c INTEGER NOT NULL)";
     String Lugares_prox = "CREATE TABLE Lugares_prox (IDLugares_prox INTEGER PRIMARY KEY AUTOINCREMENT,Lugar_prox INTEGER NOT NULL, Lugar_prin INTEGER NOT NULL)";
-
+    String User = "CREATE TABLE User (IDUser INTEGER PRIMARY KEY AUTOINCREMENT,Username TEXT NOT NULL, Password TEXT NOT NULL)";
 
     /*
     constructor de la clase
@@ -47,12 +47,14 @@ public class DataBaseHelper extends SQLiteOpenHelper {
         db.execSQL("DROP TABLE IF EXISTS Dis_baliza");
         db.execSQL("DROP TABLE IF EXISTS Typeplace");
         db.execSQL("DROP TABLE IF EXISTS Lugares_prox");
+        db.execSQL("DROP TABLE IF EXISTS User");
 
         db.execSQL(Baliza);
         db.execSQL(Lugar);
         db.execSQL(Typeplace);
         db.execSQL(Dis_baliza);
         db.execSQL(Lugares_prox);
+        db.execSQL(User);
 
         //Tabla Balizas mis Balizas Kontakt
         db.execSQL("INSERT INTO Baliza (IDbaliza , Name, Coord_x, Coord_y, Codletra,IDlugar) VALUES(?,'Kontakt DH3v 1', 13, 0,'C',1)");
@@ -137,6 +139,8 @@ public class DataBaseHelper extends SQLiteOpenHelper {
         db.execSQL("INSERT INTO Lugares_prox (IDLugares_prox,Lugar_prox, Lugar_prin) VALUES(?,7,7)");
         db.execSQL("INSERT INTO Lugares_prox (IDLugares_prox,Lugar_prox, Lugar_prin) VALUES(?,8,8)");
 
+        /*******************************************************************************************/
+        db.execSQL("INSERT INTO User (IDUser,Username, Password) VALUES(?,admin,123)");
 
         System.out.println("HA CARGADO");
 

@@ -5,6 +5,7 @@ import android.annotation.SuppressLint;
 import android.bluetooth.BluetoothAdapter;
 import android.bluetooth.BluetoothDevice;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
@@ -12,8 +13,10 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.location.LocationManager;
 import android.os.Bundle;
 import android.os.Handler;
+import android.provider.Settings;
 import android.speech.tts.TextToSpeech;
 import android.util.Base64;
 import android.util.Log;
@@ -26,6 +29,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.Toolbar;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
@@ -76,7 +80,7 @@ public class IndoorScan extends AppCompatActivity implements DialogoConfig.Confi
     ArrayList <LugarAcceso> lugar_accesos = new ArrayList <LugarAcceso>();
     public static int ciclo = 60000;
     public static int aulas_acceso = 1;
-
+    protected final String TAG =IndoorScan.this.getClass().getSimpleName();
     public static TextToSpeech mTts;
     public static String toRead;
 
@@ -84,6 +88,8 @@ public class IndoorScan extends AppCompatActivity implements DialogoConfig.Confi
     private BeaconManager mBeaconManager;
     // Representa el criterio de campos con los que buscar beacons
     private Region mRegion;
+
+    private static final int PERMISSION_REQUEST_COARSE_LOCATION = 1;
 
     /**
      * Metodo sobrescrito que inicializa la app y sus elementos graficos
@@ -296,7 +302,6 @@ public class IndoorScan extends AppCompatActivity implements DialogoConfig.Confi
         }
         Log.i("Baliza: ",baliza.substring(0,baliza.length()-1));
         //WS_Localizacion servicio = (WS_Localizacion) new WS_Localizacion().execute(baliza);
-
      // Aquí realizas la consulta a la base de datos para obtener la información de la baliza
         SQLiteDatabase db = dataBaseHelper.getReadableDatabase();
         String query = "SELECT Name, Coord_x, Coord_y FROM Baliza WHERE IDbaliza = ?";
@@ -559,7 +564,50 @@ public class IndoorScan extends AppCompatActivity implements DialogoConfig.Confi
         }
         return res;
     }
+    /**
+     * Comprobar si la localización está activada
+     *
+     * @return true si la localización esta activada, false en caso contrario
+     */
+    private boolean isLocationEnabled() {
 
+        LocationManager lm = (LocationManager) this.getSystemService(Context.LOCATION_SERVICE);
+
+        boolean networkLocationEnabled = false;
+
+        boolean gpsLocationEnabled = false;
+
+        try {
+            networkLocationEnabled = lm.isProviderEnabled(LocationManager.NETWORK_PROVIDER);
+
+            gpsLocationEnabled = lm.isProviderEnabled(LocationManager.GPS_PROVIDER);
+
+        } catch (Exception ex) {
+            Log.d(TAG, "Excepción al obtener información de localización");
+        }
+
+        return networkLocationEnabled || gpsLocationEnabled;
+    }
+
+
+    /**
+     * Abrir ajustes de localización para que el usuario pueda activar los servicios de localización
+     */
+    private void askToTurnOnLocation() {
+
+        // Notificar al usuario
+        AlertDialog.Builder dialog = new AlertDialog.Builder(this);
+        dialog.setMessage(R.string.location_disabled);
+        dialog.setPositiveButton(R.string.location_settings, new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface paramDialogInterface, int paramInt) {
+                // TODO Auto-generated method stub
+                Intent myIntent = new Intent( Settings.ACTION_LOCATION_SOURCE_SETTINGS);
+                startActivity(myIntent);
+            }
+        });
+        dialog.show();
+    }
     /**
      * M. crea el dialog para la informacion del lugar
      */
