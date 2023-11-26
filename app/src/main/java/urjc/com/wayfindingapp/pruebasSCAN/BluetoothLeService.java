@@ -35,7 +35,7 @@ import android.util.Log;
 import java.util.List;
 import java.util.UUID;
 
-import urjc.com.wayfindingapp.Activity.SampleGattAttributes;
+import urjc.com.wayfindingapp.old.SampleGattAttributes;
 
 /**
  * Service for managing connection and data communication with a GATT server hosted on a

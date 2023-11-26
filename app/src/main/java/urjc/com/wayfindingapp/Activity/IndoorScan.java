@@ -5,7 +5,6 @@ import android.annotation.SuppressLint;
 import android.bluetooth.BluetoothAdapter;
 import android.bluetooth.BluetoothDevice;
 import android.content.Context;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
@@ -13,10 +12,8 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
-import android.location.LocationManager;
 import android.os.Bundle;
 import android.os.Handler;
-import android.provider.Settings;
 import android.speech.tts.TextToSpeech;
 import android.util.Base64;
 import android.util.Log;
@@ -29,7 +26,6 @@ import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.Toolbar;
 
-import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
@@ -49,18 +45,18 @@ import urjc.com.wayfindingapp.R;
 
 
 public class IndoorScan extends AppCompatActivity implements DialogoConfig.Config,
-        DialogoInfo.Info, DialogoAcceso.Acceso{
+        DialogoInfo.Info, DialogoAcceso.Acceso {
 
     APIInterface apiInterface;
 
     //List <Baliza> balizas = new ArrayList<>();
-    List <Lugar> lugares = new ArrayList<>();
+    List <Lugar> lugares = new ArrayList <>();
     // List <LugarPasillo> lugar_pasillo = new ArrayList<>();
 
     //FloatingActionButton fab;
     public TextView txt_aula, info_aula;
     //public TextView txt_coord;
-    public ImageView image;
+    private ImageView image;
     public static BluetoothAdapter miBTAdapter = null;
     public Button info;
 
@@ -76,11 +72,11 @@ public class IndoorScan extends AppCompatActivity implements DialogoConfig.Confi
     public static Cursor c;
 
     // ArrayList <Lugar> lugares = new ArrayList <Lugar>();
- // ArrayList <Baliza> balizas = new ArrayList <Baliza>();
+    // ArrayList <Baliza> balizas = new ArrayList <Baliza>();
     ArrayList <LugarAcceso> lugar_accesos = new ArrayList <LugarAcceso>();
     public static int ciclo = 60000;
     public static int aulas_acceso = 1;
-    protected final String TAG =IndoorScan.this.getClass().getSimpleName();
+
     public static TextToSpeech mTts;
     public static String toRead;
 
@@ -89,8 +85,6 @@ public class IndoorScan extends AppCompatActivity implements DialogoConfig.Confi
     // Representa el criterio de campos con los que buscar beacons
     private Region mRegion;
 
-    private static final int PERMISSION_REQUEST_COARSE_LOCATION = 1;
-
     /**
      * Metodo sobrescrito que inicializa la app y sus elementos graficos
      */
@@ -98,13 +92,13 @@ public class IndoorScan extends AppCompatActivity implements DialogoConfig.Confi
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate( savedInstanceState );
-        setContentView( R.layout.activity_indoor_scan);
+        setContentView( R.layout.activity_indoor_scan );
         Toolbar toolbar = (Toolbar) findViewById( R.id.toolbar );
         setSupportActionBar( toolbar );
 
         info = (Button) findViewById( R.id.info );
         txt_aula = (TextView) findViewById( R.id.txt_aula );
-       //txt_coord = (TextView) findViewById( R.id.txt_coord );
+        //txt_coord = (TextView) findViewById( R.id.txt_coord );
         image = (ImageView) findViewById( R.id.image );
         info_aula = (TextView) findViewById( R.id.info_aula );
         // fab = (FloatingActionButton) findViewById(R.id.fab);
@@ -120,10 +114,10 @@ public class IndoorScan extends AppCompatActivity implements DialogoConfig.Confi
 
         mRegion = new Region(ALL_BEACONS_REGION, identifiers);*/
 
-         /**
+        /**
          Inicializacion de la base de datos SQLite
          */
-            dataBaseHelper = new DataBaseHelper( this, dbNombre, null, 1 );
+        dataBaseHelper = new DataBaseHelper( this, dbNombre, null, 1 );
 
          /*  if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
 
@@ -146,20 +140,20 @@ public class IndoorScan extends AppCompatActivity implements DialogoConfig.Confi
             }
          }*/
         // Check if the location permissions are granted
-        if (ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION)
+        if (ContextCompat.checkSelfPermission( this, Manifest.permission.ACCESS_FINE_LOCATION )
                 == PackageManager.PERMISSION_GRANTED &&
-                ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION)
+                ContextCompat.checkSelfPermission( this, Manifest.permission.ACCESS_COARSE_LOCATION )
                         == PackageManager.PERMISSION_GRANTED) {
             // Location permissions are already granted
             // Perform location-re lated tasks here
         } else {
             // Request location permissions
-            ActivityCompat.requestPermissions(this,
-                    new String[] {
+            ActivityCompat.requestPermissions( this,
+                    new String[]{
                             Manifest.permission.ACCESS_FINE_LOCATION,
                             Manifest.permission.ACCESS_COARSE_LOCATION
                     },
-                    LOCATION_PERMISSION_REQUEST_CODE);
+                    LOCATION_PERMISSION_REQUEST_CODE );
         }
 
         /**
@@ -170,11 +164,11 @@ public class IndoorScan extends AppCompatActivity implements DialogoConfig.Confi
             Intent turnOnIntent = new Intent( BluetoothAdapter.ACTION_REQUEST_ENABLE );
             startActivityForResult( turnOnIntent, 0 );
         }
-         mHandler = new Handler();
+        mHandler = new Handler();
         miBTAdapter = BluetoothAdapter.getDefaultAdapter();
 
 
-         /**
+        /**
          Boton atras
          */
           /*ImageButton home = (ImageButton)findViewById(R.id.home);
@@ -199,21 +193,21 @@ public class IndoorScan extends AppCompatActivity implements DialogoConfig.Confi
             }
         });*/
 
-         /**
+        /**
          M. sobrescrito asociado al evento click del boton para visualizar el dialogo de
          la informacion del lugar
          */
-        info.setOnClickListener(new View.OnClickListener() {
+        info.setOnClickListener( new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(aulas_acceso==1) {
-                    Lugar registro = (Lugar) lugares.get(0);
-                    crearDialogoInfo(registro);
-                }else
+                if (aulas_acceso == 1) {
+                    Lugar registro = (Lugar) lugares.get( 0 );
+                    crearDialogoInfo( registro );
+                } else
                     crearDialogoAcceso();
             }
-        });
-          if (miBTAdapter.isEnabled()) {
+        } );
+        if (miBTAdapter.isEnabled()) {
             SharedPreferences pref = getSharedPreferences( "datos",
                     Context.MODE_PRIVATE );
             ciclo = Integer.parseInt( Objects.requireNonNull( pref.getString( "tiempo", "60000" ) ) );
@@ -294,18 +288,19 @@ public class IndoorScan extends AppCompatActivity implements DialogoConfig.Confi
     /**
      * M. encargado de representar los resultados
      */
-    private void Localizar(){
+    private void Localizar() {
         String[] coord = CrearArray();
-        String res,baliza = "";
-        for(int i=0;i<coord.length;i++) {
-            baliza+= coord[i] + ":";
+        String res, baliza = "";
+        for (int i = 0; i < coord.length; i++) {
+            baliza += coord[i] + ":";
         }
-        Log.i("Baliza: ",baliza.substring(0,baliza.length()-1));
+        Log.i( "Baliza: ", baliza.substring( 0, baliza.length() - 1 ) );
         //WS_Localizacion servicio = (WS_Localizacion) new WS_Localizacion().execute(baliza);
-     // Aquí realizas la consulta a la base de datos para obtener la información de la baliza
+
+        // Aquí realizas la consulta a la base de datos para obtener la información de la baliza
         SQLiteDatabase db = dataBaseHelper.getReadableDatabase();
         String query = "SELECT Name, Coord_x, Coord_y FROM Baliza WHERE IDbaliza = ?";
-        Cursor cursor = db.rawQuery(query, new String[]{baliza});
+        Cursor cursor = db.rawQuery( query, new String[]{baliza} );
 
         try {
             if (cursor.moveToFirst()) {
@@ -314,13 +309,13 @@ public class IndoorScan extends AppCompatActivity implements DialogoConfig.Confi
                 int coordY = cursor.getInt( cursor.getColumnIndex( "Coord_y" ) );
 
                 if (nom_lugar != null) {
-                    Visualizar(nom_lugar, "X: " + coordX + "-Y: " + coordY , String.valueOf( image ) );
+                    Visualizar( nom_lugar, "X: " + coordX + "-Y: " + coordY, String.valueOf( image ) );
                 } else {
                     Visualizar( "null", "null", "null" );
                 }
                 Toast.makeText( this, "Consulta exitosa", Toast.LENGTH_LONG ).show();
             } else {
-                Visualizar( "null", "null", null);
+                Visualizar( "null", "null", null );
                 Toast.makeText( this, "No se encontraron datos para la baliza", Toast.LENGTH_LONG ).show();
             }
         } catch (Exception e) {
@@ -386,12 +381,11 @@ public class IndoorScan extends AppCompatActivity implements DialogoConfig.Confi
                         lugares.add( registro );
                         info.setVisibility( View.VISIBLE );
                         aulas_acceso = 1;
-                        info_aula.setText( " " + registro.getName() + ": \n" + "" + registro.getDescripcion());
+                        info_aula.setText( " " + registro.getName() + ": \n" + "" + registro.getDescripcion() );
                     }
                 }
                 break;
             }
-
         }
     }
 
@@ -399,17 +393,17 @@ public class IndoorScan extends AppCompatActivity implements DialogoConfig.Confi
      * M. limpia la app
      */
     public void EstadoOriginal(boolean err) {
-            txt_aula.setText("");
-          //txt_coord.setText("");
-            if(err){
-                image.setImageResource(R.color.colorPrimaryDark);
-            }else{
-               image.setImageResource(R.color.gris);
-            }
-            info.setVisibility(View.INVISIBLE);
-            lugares.clear();
-            lugar_accesos.clear();
+        txt_aula.setText( "" );
+        //txt_coord.setText("");
+        if (err) {
+            // image.setImageResource( R.color.colorPrimaryDark );
+        } else {
+            // image.setImageResource( R.color.gris );
         }
+        info.setVisibility( View.INVISIBLE );
+        lugares.clear();
+        lugar_accesos.clear();
+    }
 
 
     /**
@@ -420,33 +414,32 @@ public class IndoorScan extends AppCompatActivity implements DialogoConfig.Confi
         String info_aula = null;
         Log.i( "lugar", nom_lugar );
 
-
-        txt_aula.setText( R.string.localizacion);
+        txt_aula.setText( R.string.localizacion );
         txt_aula.setText( txt_aula.getText().toString() + "" + nom_lugar.split( "\n" )[0] );
 
         Toast.makeText( this, nom_lugar.split( "\n" )[0], Toast.LENGTH_LONG ).show();
 
+        Bitmap myBitmap = ConvertToImage( img );
+        image.setImageBitmap( myBitmap );
 
-            Bitmap myBitmap = ConvertToImage( img );
-            image.setImageBitmap( myBitmap );
-
-      //  if (coord.equals( "null" )) {
-      //     txt_coord.setText( "" );
-      //   } else
-      //      txt_coord.setText( coord );
+        //  if (coord.equals( "null" )) {
+        //     txt_coord.setText( "" );
+        //   } else
+        //      txt_coord.setText( coord );
         if (nom_lugar.indexOf( "L" ) == 0) {
-            llenarLista( info_aula, 2);
+            llenarLista( info_aula, 3 );
         } else if (nom_lugar.indexOf( "P" ) == 0) {
             desc = "\n" + nom_lugar.split( "\n" )[1];
             llenarLista( info_aula, 1 );
         }
 
-         /**
+        /**
          * Leer TexToSpeech
          */
-          // toRead = getString(R.string.localizacion);
-          // mTts = new TextToSpeech(this, IndoorScan.this);
+        // toRead = getString(R.string.localizacion);
+        // mTts = new TextToSpeech(this, IndoorScan.this);
     }
+
     /**
      * M. que descomprime la imagen de Base64
      */
@@ -508,7 +501,7 @@ public class IndoorScan extends AppCompatActivity implements DialogoConfig.Confi
      */
     private double Distancia(double rssi) {
         double res = 0;
-        double c1=1.0208,c2= 0.1384,c3=(-0.0208), txPower=-59;
+        double c1 = 1.0208, c2 = 0.1384, c3 = (-0.0208), txPower = -59;
         res = (c1) * Math.pow( (rssi / txPower), c2 ) + c3;
         return res;
     }
@@ -564,50 +557,7 @@ public class IndoorScan extends AppCompatActivity implements DialogoConfig.Confi
         }
         return res;
     }
-    /**
-     * Comprobar si la localización está activada
-     *
-     * @return true si la localización esta activada, false en caso contrario
-     */
-    private boolean isLocationEnabled() {
 
-        LocationManager lm = (LocationManager) this.getSystemService(Context.LOCATION_SERVICE);
-
-        boolean networkLocationEnabled = false;
-
-        boolean gpsLocationEnabled = false;
-
-        try {
-            networkLocationEnabled = lm.isProviderEnabled(LocationManager.NETWORK_PROVIDER);
-
-            gpsLocationEnabled = lm.isProviderEnabled(LocationManager.GPS_PROVIDER);
-
-        } catch (Exception ex) {
-            Log.d(TAG, "Excepción al obtener información de localización");
-        }
-
-        return networkLocationEnabled || gpsLocationEnabled;
-    }
-
-
-    /**
-     * Abrir ajustes de localización para que el usuario pueda activar los servicios de localización
-     */
-    private void askToTurnOnLocation() {
-
-        // Notificar al usuario
-        AlertDialog.Builder dialog = new AlertDialog.Builder(this);
-        dialog.setMessage(R.string.location_disabled);
-        dialog.setPositiveButton(R.string.location_settings, new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface paramDialogInterface, int paramInt) {
-                // TODO Auto-generated method stub
-                Intent myIntent = new Intent( Settings.ACTION_LOCATION_SOURCE_SETTINGS);
-                startActivity(myIntent);
-            }
-        });
-        dialog.show();
-    }
     /**
      * M. crea el dialog para la informacion del lugar
      */
@@ -675,11 +625,11 @@ public class IndoorScan extends AppCompatActivity implements DialogoConfig.Confi
      * M. sobreescrito para la finalizacion del dialogo de informacion de los lugares
      * cercanos de un acceso
      */
-     @Override
-     public void FinalizaAcceso() {
+    @Override
+    public void FinalizaAcceso() {
 
-     }
-   /**
+    }
+    /**
      * Metodo TextToSpeech
      */
    /* @Override

@@ -1,4 +1,4 @@
-package urjc.com.wayfindingapp.Activity;
+package urjc.com.wayfindingapp.old;
 
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;

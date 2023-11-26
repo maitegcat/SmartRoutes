@@ -83,8 +83,8 @@
         <activity android:name=".Activity.AllGuide" />
         <activity android:name=".Activity.AllOutdoorRoute" />
         <activity android:name=".Activity.AllIndoorRoute" />
-        <activity android:name=".Activity.prueba_plano" />
-        <activity android:name=".Activity.BalizasScan" />
+        <activity android:name=".old.prueba_plano" />
+        <activity android:name=".old.BalizasScan" />
         <activity android:name=".Activity.IndoorScan" />
         <activity android:name=".Activity.ListaSmartRoutes" />
         <uses-library android:name="com.google.android.maps"></uses-library>

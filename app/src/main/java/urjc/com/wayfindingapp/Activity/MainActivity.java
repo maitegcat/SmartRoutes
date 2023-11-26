@@ -6,7 +6,6 @@ import android.os.Bundle;
 import android.speech.tts.TextToSpeech;
 import android.view.View;
 import android.widget.Button;
-import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -34,9 +33,9 @@ public class MainActivity extends AppCompatActivity /*implements TextToSpeech.On
 
         Button btn = (Button)findViewById(R.id.buttonAllGuide);
         Button btnImage = (Button)findViewById(R.id.buttonIndoor);
-        Button btnImage1 = (Button)findViewById(R.id.buttonImage);
+   //     Button btnImage1 = (Button)findViewById(R.id.buttonImage);
     //    Button btnImage2 = (Button)findViewById(R.id.buttonImage1);
-//
+//app
 //        toRead =getString( R.string.mensaje_pantalla_inicio);
 //        mTts = new TextToSpeech(this, MainActivity.this);
 
@@ -56,7 +55,7 @@ public class MainActivity extends AppCompatActivity /*implements TextToSpeech.On
                 startActivity(myIntent);
             }
         });
-        btnImage1.setOnClickListener(new View.OnClickListener() {
+    /*    btnImage1.setOnClickListener(new View.OnClickListener() {
             public void onClick(View arg0) {
                 String message = getString( R.string.message ) ;
                 Intent myIntent = new Intent(MainActivity.this, BalizasScan.class);
@@ -64,7 +63,7 @@ public class MainActivity extends AppCompatActivity /*implements TextToSpeech.On
                 Toast.makeText(getApplicationContext(), message, Toast.LENGTH_LONG).show();
 
             }
-        });
+        });*/
        /* btnImage2.setOnClickListener(new View.OnClickListener() {
             public void onClick(View arg0) {
                 String message = getString( R.string.message ) ;

@@ -1,4 +1,4 @@
-package urjc.com.wayfindingapp.Activity;
+package urjc.com.wayfindingapp.old;
 
 public @interface WebMethod {
     String operationName();

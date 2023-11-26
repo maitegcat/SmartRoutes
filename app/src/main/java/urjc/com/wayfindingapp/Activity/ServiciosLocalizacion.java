@@ -4,17 +4,14 @@ import android.os.Build;
 
 import androidx.annotation.RequiresApi;
 
-@WebService(serviceName = "ServiciosLocalizacion")
-
-    public class ServiciosLocalizacion {
+public class ServiciosLocalizacion {
         /*
         Servicio Web encargado de devolver la cadena resultante al Smartphone y de llamar al
         método localizar
         de la clase LocalizacionBeacons
         */
         @RequiresApi(api = Build.VERSION_CODES.O)
-        @WebMethod(operationName = "Localizar")
-        public String[] Locate(@WebParam(name = "balizas") String balizas) {
+        public String[] Locate(String balizas) {
             LocationBeacons registro = new LocationBeacons(balizas.split(":"));
             return registro.Locate();
         }

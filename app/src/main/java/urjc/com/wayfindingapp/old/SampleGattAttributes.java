@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package urjc.com.wayfindingapp.Activity;
+package urjc.com.wayfindingapp.old;
 
 import java.util.HashMap;
 

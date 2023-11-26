@@ -2,14 +2,12 @@ package urjc.com.wayfindingapp.Activity;
 
 import android.os.Build;
 
-@WebService(serviceName = "Services")
 public class IndoorLocationService {
 
     /* Servicio Web encargado de devolver la cadena resultante al Smartphone y de llamar al
     método locate de la clase IndoorLocationService  */
 
-    @WebMethod(operationName = "Localizar")
-    public String[] Localizar(@WebParam(name = "baliza") String baliza) {
+    public String[] Localizar(String baliza) {
         LocationBeacons registro = new LocationBeacons(baliza.split(":"));
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
             return registro.Locate();

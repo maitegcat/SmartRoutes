@@ -1,4 +1,4 @@
-package urjc.com.wayfindingapp.Activity;
+package urjc.com.wayfindingapp.old;
 
 import android.Manifest;
 import android.annotation.SuppressLint;
@@ -41,12 +41,12 @@ import java.util.Collection;
 import java.util.Locale;
 import java.util.ResourceBundle;
 
+import urjc.com.wayfindingapp.Activity.MainActivity;
 import urjc.com.wayfindingapp.R;
 
 /**
  * App main activity, gestiona la detección de beacons, mostrando un mensaje de los beacons
  * detectados
- *
  */
 public class BalizasScan extends AppCompatActivity implements View.OnClickListener, BeaconConsumer,
         RangeNotifier, TextToSpeech.OnInitListener {
@@ -55,7 +55,8 @@ public class BalizasScan extends AppCompatActivity implements View.OnClickListen
     public static String toRead;
     public ImageView image;
 
-    protected final String TAG = BalizasScan.this.getClass().getSimpleName();;
+    protected final String TAG = BalizasScan.this.getClass().getSimpleName();
+    ;
     private static final int PERMISSION_REQUEST_COARSE_LOCATION = 1;
     private static final int REQUEST_ENABLE_BLUETOOTH = 1;
     private static final long DEFAULT_SCAN_PERIOD_MS = 3000l;
@@ -70,51 +71,50 @@ public class BalizasScan extends AppCompatActivity implements View.OnClickListen
     private ResourceBundle sharedPreferences;
 
 
-
     @SuppressLint("WrongThread")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_balizas_scan );
+        super.onCreate( savedInstanceState );
+        setContentView( R.layout.activity_balizas_scan );
 
-        getStartButton().setOnClickListener(this);
-        getStopButton().setOnClickListener(this);
-        ImageView imageView = (ImageView)findViewById(R.id.piso1);
+        getStartButton().setOnClickListener( this );
+        getStopButton().setOnClickListener( this );
+        ImageView imageView = (ImageView) findViewById( R.id.piso1 );
         image = (ImageView) findViewById( R.id.image );
 
-        mBeaconManager = BeaconManager.getInstanceForApplication(this);
+        mBeaconManager = BeaconManager.getInstanceForApplication( this );
 
         // Fijar un protocolo beacon, Eddystone en este caso
-        mBeaconManager.getBeaconParsers().add(new BeaconParser().
-                setBeaconLayout(BeaconParser.EDDYSTONE_UID_LAYOUT));
+        mBeaconManager.getBeaconParsers().add( new BeaconParser().
+                setBeaconLayout( BeaconParser.EDDYSTONE_UID_LAYOUT ) );
 
-        ArrayList<Identifier> identifiers = new ArrayList<>();
+        ArrayList <Identifier> identifiers = new ArrayList <>();
 
-        mRegion = new Region(ALL_BEACONS_REGION, identifiers);
+        mRegion = new Region( ALL_BEACONS_REGION, identifiers );
 
 
         ByteArrayOutputStream baos = new ByteArrayOutputStream();
-        Bitmap bitmap = BitmapFactory.decodeResource(getResources(), R.drawable.fundjuan1b4);
-        bitmap.compress(Bitmap.CompressFormat.JPEG, 100, baos);
+        Bitmap bitmap = BitmapFactory.decodeResource( getResources(), R.drawable.fundjuan1b4 );
+        bitmap.compress( Bitmap.CompressFormat.JPEG, 100, baos );
         byte[] imageBytes = baos.toByteArray();
-        String imageString = Base64.encodeToString(imageBytes, Base64.DEFAULT);
+        String imageString = Base64.encodeToString( imageBytes, Base64.DEFAULT );
 
         //decode base64 string to image
-        imageBytes = Base64.decode(imageString, Base64.DEFAULT);
-        Bitmap decodedImage = BitmapFactory.decodeByteArray(imageBytes, 0, imageBytes.length);
-        imageView.setImageBitmap(decodedImage);
+        imageBytes = Base64.decode( imageString, Base64.DEFAULT );
+        Bitmap decodedImage = BitmapFactory.decodeByteArray( imageBytes, 0, imageBytes.length );
+        imageView.setImageBitmap( decodedImage );
 
     }
 
     @Override
     public void onClick(View view) {
 
-        if (view.equals(findViewById(R.id.startReadingBeaconsButton))) {
+        if (view.equals( findViewById( R.id.startReadingBeaconsButton ) )) {
 
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
 
                 // Si los permisos de localización todavía no se han concedido, solicitarlos
-                if (this.checkSelfPermission(Manifest.permission.ACCESS_COARSE_LOCATION) !=
+                if (this.checkSelfPermission( Manifest.permission.ACCESS_COARSE_LOCATION ) !=
                         PackageManager.PERMISSION_GRANTED) {
 
                     askForLocationPermissions();
@@ -129,7 +129,7 @@ public class BalizasScan extends AppCompatActivity implements View.OnClickListen
                 prepareDetection();
             }
 
-        } else if (view.equals(findViewById(R.id.stopReadingBeaconsButton))) {
+        } else if (view.equals( findViewById( R.id.stopReadingBeaconsButton ) )) {
 
             stopDetectingBeacons();
 
@@ -157,7 +157,7 @@ public class BalizasScan extends AppCompatActivity implements View.OnClickListen
 
             if (mBluetoothAdapter == null) {
 
-                showToastMessage(getString(R.string.not_support_bluetooth_msg));
+                showToastMessage( getString( R.string.not_support_bluetooth_msg ) );
 
             } else if (mBluetoothAdapter.isEnabled()) {
 
@@ -166,8 +166,8 @@ public class BalizasScan extends AppCompatActivity implements View.OnClickListen
             } else {
 
                 // Pedir al usuario que active el bluetooth
-                Intent enableBtIntent = new Intent(BluetoothAdapter.ACTION_REQUEST_ENABLE);
-                startActivityForResult(enableBtIntent, REQUEST_ENABLE_BLUETOOTH);
+                Intent enableBtIntent = new Intent( BluetoothAdapter.ACTION_REQUEST_ENABLE );
+                startActivityForResult( enableBtIntent, REQUEST_ENABLE_BLUETOOTH );
             }
         }
     }
@@ -184,11 +184,11 @@ public class BalizasScan extends AppCompatActivity implements View.OnClickListen
 
             } else if (resultCode == RESULT_CANCELED) { // User refuses to enable bluetooth
 
-                showToastMessage(getString(R.string.no_bluetooth_msg));
+                showToastMessage( getString( R.string.no_bluetooth_msg ) );
             }
         }
 
-        super.onActivityResult(requestCode, resultCode, data);
+        super.onActivityResult( requestCode, resultCode, data );
     }
 
     /**
@@ -197,18 +197,18 @@ public class BalizasScan extends AppCompatActivity implements View.OnClickListen
     private void startDetectingBeacons() {
 
         // Fijar un periodo de escaneo
-        mBeaconManager.setForegroundScanPeriod(DEFAULT_SCAN_PERIOD_MS);
+        mBeaconManager.setForegroundScanPeriod( DEFAULT_SCAN_PERIOD_MS );
 
         // Enlazar al servicio de beacons. Obtiene un callback cuando esté listo para ser usado
-        mBeaconManager.bind(this);
+        mBeaconManager.bind( this );
 
         // Desactivar botón de comenzar
-        getStartButton().setEnabled(false);
-        getStartButton().setAlpha(.5f);
+        getStartButton().setEnabled( false );
+        getStartButton().setAlpha( .5f );
 
         // Activar botón de parar
-        getStopButton().setEnabled(true);
-        getStopButton().setAlpha(1);
+        getStopButton().setEnabled( true );
+        getStopButton().setAlpha( 1 );
     }
 
     @Override
@@ -217,15 +217,15 @@ public class BalizasScan extends AppCompatActivity implements View.OnClickListen
         try {
             // Empezar a buscar los beacons que encajen con el el objeto Región pasado, incluyendo
             // actualizaciones en la distancia estimada
-            mBeaconManager.startRangingBeaconsInRegion(mRegion);
+            mBeaconManager.startRangingBeaconsInRegion( mRegion );
 
-            showToastMessage(getString(R.string.start_looking_for_beacons));
+            showToastMessage( getString( R.string.start_looking_for_beacons ) );
 
         } catch (RemoteException e) {
-            Log.d(TAG, "Se ha producido una excepción al empezar a buscar beacons " + e.getMessage());
+            Log.d( TAG, "Se ha producido una excepción al empezar a buscar beacons " + e.getMessage() );
         }
 
-        mBeaconManager.addRangeNotifier(this);
+        mBeaconManager.addRangeNotifier( this );
     }
 
     /**
@@ -234,14 +234,14 @@ public class BalizasScan extends AppCompatActivity implements View.OnClickListen
      */
     @SuppressLint("StringFormatMatches")
     @Override
-    public void didRangeBeaconsInRegion(Collection<Beacon> beacons, Region region) {
+    public void didRangeBeaconsInRegion(Collection <Beacon> beacons, Region region) {
 
         if (beacons.size() == 0) {
-            showToastMessage(getString(R.string.no_beacons_detected));
+            showToastMessage( getString( R.string.no_beacons_detected ) );
         }
 
         for (Beacon beacon : beacons) {
-             //scanFilters.add(new ScanFilter.Builder().setServiceUuid(SERVICE_UUID).build());
+            //scanFilters.add(new ScanFilter.Builder().setServiceUuid(SERVICE_UUID).build());
 
            /* SharedPreferences myPreferences
                     = PreferenceManager.getDefaultSharedPreferences(Beacons.this);
@@ -251,50 +251,51 @@ public class BalizasScan extends AppCompatActivity implements View.OnClickListen
             SharedPreferences.Editor myEditor = myPreferences.edit();
             myEditor.commit();
             */
-            showToastMessage(getString(R.string.beacon_detected, beacon.getBluetoothName(),beacon.getDistance(),beacon.getRssi()));
+            showToastMessage( getString( R.string.beacon_detected, beacon.getBluetoothName(), beacon.getDistance(), beacon.getRssi() ) );
 
         }
-             }
+    }
 
 
-       private void stopDetectingBeacons() {
+    private void stopDetectingBeacons() {
 
         try {
-            mBeaconManager.stopMonitoringBeaconsInRegion(mRegion);
-            showToastMessage(getString(R.string.stop_looking_for_beacons));
+            mBeaconManager.stopMonitoringBeaconsInRegion( mRegion );
+            showToastMessage( getString( R.string.stop_looking_for_beacons ) );
         } catch (RemoteException e) {
-            Log.d(TAG, "Se ha producido una excepción al parar de buscar beacons " + e.getMessage());
+            Log.d( TAG, "Se ha producido una excepción al parar de buscar beacons " + e.getMessage() );
         }
 
         mBeaconManager.removeAllRangeNotifiers();
 
         // Desenlazar servicio de beacons
-        mBeaconManager.unbind(this);
+        mBeaconManager.unbind( this );
 
         // Activar botón de comenzar
-        getStartButton().setEnabled(true);
-        getStartButton().setAlpha(1);
+        getStartButton().setEnabled( true );
+        getStartButton().setAlpha( 1 );
 
         // Desactivar botón de parar
-        getStopButton().setEnabled(false);
-        getStopButton().setAlpha(.5f);
+        getStopButton().setEnabled( false );
+        getStopButton().setAlpha( .5f );
     }
+
     /**
      * Comprobar permisión de localización para Android >= M
      */
     private void askForLocationPermissions() {
 
-        final AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        builder.setTitle(R.string.location_access_needed);
-        builder.setMessage( R.string.grant_location_access);
-        builder.setPositiveButton(android.R.string.ok, null);
-        builder.setOnDismissListener(new DialogInterface.OnDismissListener() {
+        final AlertDialog.Builder builder = new AlertDialog.Builder( this );
+        builder.setTitle( R.string.location_access_needed );
+        builder.setMessage( R.string.grant_location_access );
+        builder.setPositiveButton( android.R.string.ok, null );
+        builder.setOnDismissListener( new DialogInterface.OnDismissListener() {
             @RequiresApi(api = Build.VERSION_CODES.M)
             public void onDismiss(DialogInterface dialog) {
-                requestPermissions(new String[]{Manifest.permission.ACCESS_COARSE_LOCATION},
-                        PERMISSION_REQUEST_COARSE_LOCATION);
+                requestPermissions( new String[]{Manifest.permission.ACCESS_COARSE_LOCATION},
+                        PERMISSION_REQUEST_COARSE_LOCATION );
             }
-        });
+        } );
         builder.show();
     }
 
@@ -306,17 +307,17 @@ public class BalizasScan extends AppCompatActivity implements View.OnClickListen
                 if (grantResults[0] == PackageManager.PERMISSION_GRANTED) {
                     prepareDetection();
                 } else {
-                    final AlertDialog.Builder builder = new AlertDialog.Builder(this);
-                    builder.setTitle(R.string.funcionality_limited);
-                    builder.setMessage(getString(R.string.location_not_granted) +
-                            getString(R.string.cannot_discover_beacons));
-                    builder.setPositiveButton(android.R.string.ok, null);
-                    builder.setOnDismissListener(new DialogInterface.OnDismissListener() {
+                    final AlertDialog.Builder builder = new AlertDialog.Builder( this );
+                    builder.setTitle( R.string.funcionality_limited );
+                    builder.setMessage( getString( R.string.location_not_granted ) +
+                            getString( R.string.cannot_discover_beacons ) );
+                    builder.setPositiveButton( android.R.string.ok, null );
+                    builder.setOnDismissListener( new DialogInterface.OnDismissListener() {
                         @Override
                         public void onDismiss(DialogInterface dialog) {
 
                         }
-                    });
+                    } );
                     builder.show();
                 }
                 return;
@@ -331,19 +332,19 @@ public class BalizasScan extends AppCompatActivity implements View.OnClickListen
      */
     private boolean isLocationEnabled() {
 
-        LocationManager lm = (LocationManager) this.getSystemService(Context.LOCATION_SERVICE);
+        LocationManager lm = (LocationManager) this.getSystemService( Context.LOCATION_SERVICE );
 
         boolean networkLocationEnabled = false;
 
         boolean gpsLocationEnabled = false;
 
         try {
-            networkLocationEnabled = lm.isProviderEnabled(LocationManager.NETWORK_PROVIDER);
+            networkLocationEnabled = lm.isProviderEnabled( LocationManager.NETWORK_PROVIDER );
 
-            gpsLocationEnabled = lm.isProviderEnabled(LocationManager.GPS_PROVIDER);
+            gpsLocationEnabled = lm.isProviderEnabled( LocationManager.GPS_PROVIDER );
 
         } catch (Exception ex) {
-            Log.d(TAG, "Excepción al obtener información de localización");
+            Log.d( TAG, "Excepción al obtener información de localización" );
         }
 
         return networkLocationEnabled || gpsLocationEnabled;
@@ -356,25 +357,25 @@ public class BalizasScan extends AppCompatActivity implements View.OnClickListen
     private void askToTurnOnLocation() {
 
         // Notificar al usuario
-        AlertDialog.Builder dialog = new AlertDialog.Builder(this);
-        dialog.setMessage(R.string.location_disabled);
-        dialog.setPositiveButton(R.string.location_settings, new DialogInterface.OnClickListener() {
+        AlertDialog.Builder dialog = new AlertDialog.Builder( this );
+        dialog.setMessage( R.string.location_disabled );
+        dialog.setPositiveButton( R.string.location_settings, new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface paramDialogInterface, int paramInt) {
                 // TODO Auto-generated method stub
-                Intent myIntent = new Intent(Settings.ACTION_LOCATION_SOURCE_SETTINGS);
-                startActivity(myIntent);
+                Intent myIntent = new Intent( Settings.ACTION_LOCATION_SOURCE_SETTINGS );
+                startActivity( myIntent );
             }
-        });
+        } );
         dialog.show();
     }
 
     private Button getStartButton() {
-        return (Button) findViewById(R.id.startReadingBeaconsButton);
+        return (Button) findViewById( R.id.startReadingBeaconsButton );
     }
 
     private Button getStopButton() {
-        return (Button) findViewById(R.id.stopReadingBeaconsButton);
+        return (Button) findViewById( R.id.stopReadingBeaconsButton );
     }
 
     /**
@@ -382,9 +383,9 @@ public class BalizasScan extends AppCompatActivity implements View.OnClickListen
      *
      * @param message mensaje a enseñar
      */
-    private void showToastMessage (String message) {
-        Toast toast = Toast.makeText(this, message, Toast.LENGTH_LONG);
-        toast.setGravity(Gravity.CENTER, 0, 0);
+    private void showToastMessage(String message) {
+        Toast toast = Toast.makeText( this, message, Toast.LENGTH_LONG );
+        toast.setGravity( Gravity.CENTER, 0, 0 );
         toast.show();
     }
 
@@ -392,24 +393,26 @@ public class BalizasScan extends AppCompatActivity implements View.OnClickListen
     protected void onDestroy() {
         super.onDestroy();
         mBeaconManager.removeAllRangeNotifiers();
-        mBeaconManager.unbind(this);
+        mBeaconManager.unbind( this );
     }
+
     /**
      * Metodo TextToSpeech
      */
 
     public void onInit(int status) {
         // TODO Auto-generated method stub
-        Locale loc = new Locale("es", "ES", "");
-        mTts.setLanguage(loc);
+        Locale loc = new Locale( "es", "ES", "" );
+        mTts.setLanguage( loc );
         readOption();
     }
+
     public static void readOption() {
         if (MainActivity.flag_volumen) {
-            mTts.speak(toRead, TextToSpeech.QUEUE_FLUSH, null);
+            mTts.speak( toRead, TextToSpeech.QUEUE_FLUSH, null );
         }
-        if (toRead.equals("Volumen desactivado")) {
-            mTts.speak(toRead, TextToSpeech.QUEUE_FLUSH, null);
+        if (toRead.equals( "Volumen desactivado" )) {
+            mTts.speak( toRead, TextToSpeech.QUEUE_FLUSH, null );
         }
     }
 

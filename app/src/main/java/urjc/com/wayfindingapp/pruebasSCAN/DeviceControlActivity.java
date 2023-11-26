@@ -39,7 +39,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
-import urjc.com.wayfindingapp.Activity.SampleGattAttributes;
+import urjc.com.wayfindingapp.old.SampleGattAttributes;
 import urjc.com.wayfindingapp.R;
 
 /**
