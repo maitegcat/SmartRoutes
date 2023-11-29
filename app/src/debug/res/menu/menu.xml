@@ -18,7 +18,6 @@
       </item>
       <item
           android:id="@+id/optionCredits"
-          android:title="Créditos"
-          android:icon="@drawable/iconoinfo">
+          android:title="Créditos">
       </item>
 </menu>

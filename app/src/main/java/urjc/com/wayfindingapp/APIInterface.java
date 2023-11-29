@@ -10,22 +10,20 @@ import retrofit2.Call;
 import retrofit2.http.GET;
 import retrofit2.http.Path;
 import retrofit2.http.Url;
-import urjc.com.wayfindingapp.Model.Baliza;
 import urjc.com.wayfindingapp.Model.City;
 import urjc.com.wayfindingapp.Model.Guide;
-import urjc.com.wayfindingapp.Model.Lugar;
 
 public interface APIInterface {
 
    @GET("/api/guide")
    Call<List<Guide>> doGetListResources();
-
+/*
    @GET("/api/lugar")
    Call<List<Lugar>> getLugar (); 
    
 
    @GET("/api/baliza")
-   Call<List<Baliza>> getBaliza();
+   Call<List<Baliza>> getBaliza();*/
 
    @GET("/api/places")
    Call<ResponseBody> download(@Url String fileUrl);
@@ -38,10 +36,5 @@ public interface APIInterface {
 
 
    }
- /* @GET("places")
-   Call<ResponseBody> retrieveImageData();
-       @Query("image") String base64,
-           @Query("extension") String extension,
-           @Query("user_id") String user_id
-   );*/
+
 

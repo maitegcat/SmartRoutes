@@ -1,18 +1,23 @@
 package urjc.com.wayfindingapp.Activity;
 
+import static urjc.com.wayfindingapp.Activity.IndoorScan.dbNombre;
+import static urjc.com.wayfindingapp.Activity.IndoorScan.dbVersion;
+
 import android.os.Build;
 
 import androidx.annotation.RequiresApi;
+import androidx.appcompat.app.AppCompatActivity;
 
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.InputStream;
 import java.util.Base64;
 
-public class LocationBeacons {
+public class LocationBeacons extends AppCompatActivity {
+
+
     String balizas[];
-     BaseDeDatos base = new BaseDeDatos();
-   //  BaseDeDatosSmartRoutes base = new BaseDeDatosSmartRoutes();
+    DataBaseHelper base = new DataBaseHelper( this, dbNombre, null, dbVersion);
 
     /**Constructor de la clase que inicializa los datos de las baliza y sus respectivos
     valores de RSSI

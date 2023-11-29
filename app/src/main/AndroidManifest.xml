@@ -8,14 +8,12 @@
          Google Maps Android API v2, but you must specify either coarse or fine
          location permissions for the 'MyLocation' functionality.
     -->
-    <uses-permission android:name="com.majeur.launcher.permission.UPDATE_BADGE" />
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
     <uses-permission android:name="android.permission.CAMERA"/>
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.INTERNET"/>
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
     <uses-permission android:name="android.permission.VIBRATE"/>
-    <uses-permission android:name="android.permission.NFC"/>
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
     <uses-permission android:name="android.permission.WAKE_LOCK" />
     <uses-permission android:name="android.permission.BLUETOOTH" />
@@ -68,13 +66,7 @@
         <meta-data
             android:name="com.google.android.geo.API_KEY"
             android:value="@string/google_maps_key" />
-<!--
-        <meta-data
-            android:name="com.google.android.maps.v2.API_KEY"
-            android:value="@string/google_maps_key" />
 
-        <uses-library android:name="com.google.android.maps"
-            android:required="true"/>-->
 
         <activity
             android:name=".Activity.MapsActivity"
@@ -83,17 +75,10 @@
         <activity android:name=".Activity.AllGuide" />
         <activity android:name=".Activity.AllOutdoorRoute" />
         <activity android:name=".Activity.AllIndoorRoute" />
-        <activity android:name=".old.prueba_plano" />
-        <activity android:name=".old.BalizasScan" />
         <activity android:name=".Activity.IndoorScan" />
-        <activity android:name=".Activity.ListaSmartRoutes" />
+
         <uses-library android:name="com.google.android.maps"></uses-library>
 
-        <!--<service android:name="InquiryService"></service>-->
-        <!--<activity android:name="AuxiliarPhoto"></activity>-->
-        <!--<activity android:name="DeafMap"></activity>-->
-        <!--<activity android:name="DeafAPI"></activity>-->
-
-        <service android:name="com.kontakt.sdk.android.ble.service.ProximityService" android:exported="false"/>
+       <service android:name="com.kontakt.sdk.android.ble.service.ProximityService" android:exported="false"/>
     </application>
 </manifest>

@@ -25,14 +25,13 @@ import com.google.firebase.firestore.auth.User;
 import java.util.ArrayList;
 import java.util.List;
 
-import urjc.com.wayfindingapp.APIInterface;
 import urjc.com.wayfindingapp.Activity.MainActivity;
 import urjc.com.wayfindingapp.R;
 
 public class LoginActivity extends AppCompatActivity {
 
     private LoginViewModel loginViewModel;
-    APIInterface apiInterface;
+
     List <User> users = new ArrayList <>();
 
     @Override

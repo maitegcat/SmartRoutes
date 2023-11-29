@@ -10,12 +10,9 @@ import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.os.Handler;
 import android.speech.tts.TextToSpeech;
-import android.util.Base64;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -30,28 +27,16 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 
-import org.altbeacon.beacon.BeaconManager;
-import org.altbeacon.beacon.Region;
-
-import java.io.ByteArrayInputStream;
-import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
-import urjc.com.wayfindingapp.APIInterface;
 import urjc.com.wayfindingapp.Model.Lugar;
 import urjc.com.wayfindingapp.R;
 
+public class IndoorScan extends AppCompatActivity implements DialogoInfo.Info, DialogoAcceso.Acceso {
 
-public class IndoorScan extends AppCompatActivity implements DialogoConfig.Config,
-        DialogoInfo.Info, DialogoAcceso.Acceso {
-
-    APIInterface apiInterface;
-
-    //List <Baliza> balizas = new ArrayList<>();
     List <Lugar> lugares = new ArrayList <>();
-    // List <LugarPasillo> lugar_pasillo = new ArrayList<>();
 
     //FloatingActionButton fab;
     public TextView txt_aula, info_aula;
@@ -66,13 +51,11 @@ public class IndoorScan extends AppCompatActivity implements DialogoConfig.Confi
 
     public static DataBaseHelper dataBaseHelper;
     public static String dbNombre = "bluetooth", desc = "";
+    public static int dbVersion = 1;
     public static Handler mHandler;
     public static boolean estado = false, estado1 = false, descargado = false;
     public static String resView = "";
     public static Cursor c;
-
-    // ArrayList <Lugar> lugares = new ArrayList <Lugar>();
-    // ArrayList <Baliza> balizas = new ArrayList <Baliza>();
     ArrayList <LugarAcceso> lugar_accesos = new ArrayList <LugarAcceso>();
     public static int ciclo = 60000;
     public static int aulas_acceso = 1;
@@ -80,10 +63,6 @@ public class IndoorScan extends AppCompatActivity implements DialogoConfig.Confi
     public static TextToSpeech mTts;
     public static String toRead;
 
-    // Para interactuar con los beacons desde una actividad
-    private BeaconManager mBeaconManager;
-    // Representa el criterio de campos con los que buscar beacons
-    private Region mRegion;
 
     /**
      * Metodo sobrescrito que inicializa la app y sus elementos graficos
@@ -117,7 +96,7 @@ public class IndoorScan extends AppCompatActivity implements DialogoConfig.Confi
         /**
          Inicializacion de la base de datos SQLite
          */
-        dataBaseHelper = new DataBaseHelper( this, dbNombre, null, 1 );
+        dataBaseHelper = new DataBaseHelper( this, dbNombre, null, dbVersion );
 
          /*  if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
 
@@ -167,29 +146,15 @@ public class IndoorScan extends AppCompatActivity implements DialogoConfig.Confi
         mHandler = new Handler();
         miBTAdapter = BluetoothAdapter.getDefaultAdapter();
 
-
         /**
          Boton atras
          */
-          /*ImageButton home = (ImageButton)findViewById(R.id.home);
-         home.setContentDescription(home.getContentDescription()+". Está en rutas de interiores");
-         home.setOnClickListener(new View.OnClickListener(){
+       /* ImageButton home = (ImageButton)findViewById(R.id.home);
+        home.setContentDescription(home.getContentDescription()+". Está en rutas de interiores");
+        home.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View arg0) {
-                // TODO Auto-generated method stub
-                finish();
-            }
-        });*/
-
-        /**
-         M. sobrescrito que asociado al evento click del boton para presentar el mensaje
-         de actualizacion
-         */
-         /* fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, R.string.msg_act, Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
+              finish();
             }
         });*/
 
@@ -229,8 +194,8 @@ public class IndoorScan extends AppCompatActivity implements DialogoConfig.Confi
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflar el menú; para añadir elementos a la barra de acciones .
         MenuInflater inflater = getMenuInflater();
-        inflater.inflate( R.menu.credits, menu );
-        /* AlertDialog alertDialog = new AlertDialog.Builder(this).create();
+        /*  inflater.inflate( R.menu.menu, menu );
+        AlertDialog alertDialog = new AlertDialog.Builder(this).create();
         alertDialog.setTitle("Bien!!! ");
         alertDialog.setMessage("Has conseguido 10 puntos");
         alertDialog.setIcon(R.drawable.medalla);
@@ -259,7 +224,7 @@ public class IndoorScan extends AppCompatActivity implements DialogoConfig.Confi
      * M. encargado de reiniciar la app
      */
     public void Reiniciar() {
-        BaseDeDatos.CleanTableTemp( dataBaseHelper );
+        DataBaseHelper.CleanTableTemp( dataBaseHelper );
         Intent i = getBaseContext().getPackageManager()
                 .getLaunchIntentForPackage( getBaseContext().getPackageName() );
         i.addFlags( Intent.FLAG_ACTIVITY_CLEAR_TOP );
@@ -288,6 +253,75 @@ public class IndoorScan extends AppCompatActivity implements DialogoConfig.Confi
     /**
      * M. encargado de representar los resultados
      */
+  /*  private void Localizar() {
+        try {
+            String[] coord = CrearArray();
+
+            if (coord != null) {
+                String baliza = "";
+                for (int i = 0; i < coord.length; i++) {
+                    baliza += coord[i] + ":";
+                }
+                Log.i("Baliza: ", baliza.substring(0, baliza.length() - 1));
+
+                try {
+                    long idBaliza = Long.parseLong(baliza);
+                    Log.i("ID Baliza", "Valor de ID Baliza: " + idBaliza);
+
+                    // Aquí se realiza la consulta a la base de datos para obtener la información de la baliza
+                    SQLiteDatabase db = dataBaseHelper.getReadableDatabase();
+                    String query = "SELECT Name, Coord_x, Coord_y FROM Baliza WHERE IDbaliza = ?";
+
+                    try {
+                        Cursor cursor = db.rawQuery(query, new String[]{String.valueOf(idBaliza)});
+                        try {
+                            if (cursor.moveToFirst()) {
+                                String nom_lugar = cursor.getString(cursor.getColumnIndex("Name"));
+                                int coordX = cursor.getInt(cursor.getColumnIndex("Coord_x"));
+                                int coordY = cursor.getInt(cursor.getColumnIndex("Coord_y"));
+
+                                if (nom_lugar != null) {
+                                    Visualizar(nom_lugar, "X: " + coordX + "-Y: " + coordY, String.valueOf(image));
+                                } else {
+                                    Visualizar("null", "null", "null");
+                                }
+                                Toast.makeText(this, "Consulta exitosa", Toast.LENGTH_LONG).show();
+                            } else {
+                                Visualizar("null", "null", null);
+                                Toast.makeText(this, "No se encontraron datos para la baliza", Toast.LENGTH_LONG).show();
+                            }
+                        } catch (Exception e) {
+                            DataBaseHelper.CleanTableTemp(dataBaseHelper);
+                            Toast.makeText(this, e.toString(), Toast.LENGTH_LONG).show();
+                            EstadoOriginal(true);
+                            Log.e("Error", "Excepción en la consulta a la base de datos", e);
+                        } finally {
+                            cursor.close();
+                        }
+                    } catch (Exception e) {
+                        // Manejar el caso cuando hay un error en la consulta
+                        Toast.makeText(this, "Error al ejecutar la consulta a la base de datos", Toast.LENGTH_LONG).show();
+                        Log.e("Error", "Excepción al ejecutar la consulta a la base de datos", e);
+                    } finally {
+                        db.close();
+                    }
+                } catch (NumberFormatException e) {
+                    // Manejar el caso cuando baliza no es un número válido
+                    Toast.makeText(this, "La baliza no es un número válido: " + baliza, Toast.LENGTH_SHORT).show();
+                    Log.e("Error", "La baliza no es un número válido: " + baliza, e);
+                }
+            } else {
+                // Manejar el caso cuando coord es null
+                Toast.makeText(this, "El array coord es null", Toast.LENGTH_SHORT).show();
+                Log.e("Error", "El array coord es null");
+            }
+        } catch (Exception e) {
+            // Manejar otros casos de error
+            Toast.makeText(this, "Error desconocido", Toast.LENGTH_LONG).show();
+            Log.e("Error", "Error desconocido", e);
+        }
+    }*/
+
     private void Localizar() {
         String[] coord = CrearArray();
         String res, baliza = "";
@@ -297,7 +331,7 @@ public class IndoorScan extends AppCompatActivity implements DialogoConfig.Confi
         Log.i( "Baliza: ", baliza.substring( 0, baliza.length() - 1 ) );
         //WS_Localizacion servicio = (WS_Localizacion) new WS_Localizacion().execute(baliza);
 
-        // Aquí realizas la consulta a la base de datos para obtener la información de la baliza
+        // Aquí se realiza la consulta a la base de datos para obtener la información de la baliza
         SQLiteDatabase db = dataBaseHelper.getReadableDatabase();
         String query = "SELECT Name, Coord_x, Coord_y FROM Baliza WHERE IDbaliza = ?";
         Cursor cursor = db.rawQuery( query, new String[]{baliza} );
@@ -319,7 +353,7 @@ public class IndoorScan extends AppCompatActivity implements DialogoConfig.Confi
                 Toast.makeText( this, "No se encontraron datos para la baliza", Toast.LENGTH_LONG ).show();
             }
         } catch (Exception e) {
-            BaseDeDatos.CleanTableTemp( dataBaseHelper );
+            DataBaseHelper.CleanTableTemp( dataBaseHelper );
             Toast.makeText( this, e.toString(), Toast.LENGTH_LONG ).show();
             EstadoOriginal( true );
             e.printStackTrace();
@@ -328,7 +362,7 @@ public class IndoorScan extends AppCompatActivity implements DialogoConfig.Confi
             db.close();
         }
     }
-    /*
+    /* codigo antiguo conexion por servidor
         try {
             res = servicio.get();
             Log.i("Res: ",res);
@@ -419,8 +453,8 @@ public class IndoorScan extends AppCompatActivity implements DialogoConfig.Confi
 
         Toast.makeText( this, nom_lugar.split( "\n" )[0], Toast.LENGTH_LONG ).show();
 
-        Bitmap myBitmap = ConvertToImage( img );
-        image.setImageBitmap( myBitmap );
+     /*   Bitmap myBitmap = ConvertToImage( img );
+        image.setImageBitmap( myBitmap );*/
 
         //  if (coord.equals( "null" )) {
         //     txt_coord.setText( "" );
@@ -439,10 +473,9 @@ public class IndoorScan extends AppCompatActivity implements DialogoConfig.Confi
         // toRead = getString(R.string.localizacion);
         // mTts = new TextToSpeech(this, IndoorScan.this);
     }
-
-    /**
+   /* *//**
      * M. que descomprime la imagen de Base64
-     */
+     *//*
     private Bitmap ConvertToImage(String img) {
         try {
             InputStream stream = new
@@ -454,9 +487,8 @@ public class IndoorScan extends AppCompatActivity implements DialogoConfig.Confi
             EstadoOriginal( true );
             return null;
         }
-    }
-
-    /**
+    }*/
+     /**
      * M. implementa un hilo encargado de escanear los RSSI de las balizas durante 5 segundos
      **/
     private void Escanear(boolean enable) {
@@ -474,7 +506,7 @@ public class IndoorScan extends AppCompatActivity implements DialogoConfig.Confi
                             Localizar();
                             // button.setEnabled(true);
                             resView = "";
-                            BaseDeDatos.CleanTableTemp( dataBaseHelper );
+                            dataBaseHelper.CleanTableTemp( dataBaseHelper );
                             Hilo( true );
                         }
                     }, 60000 );
@@ -490,7 +522,7 @@ public class IndoorScan extends AppCompatActivity implements DialogoConfig.Confi
                 }
             } catch (Exception e) {
                 e.printStackTrace();
-                BaseDeDatos.CleanTableTemp( dataBaseHelper );
+                dataBaseHelper.CleanTableTemp( dataBaseHelper );
             }
         } else
             Toast.makeText( this, "Bluetooth Desactivado", Toast.LENGTH_LONG ).show();
@@ -516,7 +548,7 @@ public class IndoorScan extends AppCompatActivity implements DialogoConfig.Confi
             if (device.getName() != null) {
                 if (resView.equals( "" ) || resView.indexOf( device.getName() ) < 0) {
                     resView = resView + "\n" + device.getName() + ";" + Distancia( rssi );
-                    boolean flag = BaseDeDatos.IntroTemp( dataBaseHelper, device.getName(), Distancia( rssi ) );
+                    boolean flag = DataBaseHelper.IntroTemp( dataBaseHelper, device.getName(), Distancia( rssi ) );
                     Toast.makeText( getApplicationContext(), device.getName(), Toast.LENGTH_LONG );
                     if (!flag) {
                         Toast.makeText( getApplicationContext(), "Error de DB", Toast.LENGTH_LONG ).show();
@@ -536,7 +568,7 @@ public class IndoorScan extends AppCompatActivity implements DialogoConfig.Confi
             SQLiteDatabase db = dataBaseHelper.getReadableDatabase();
             if (db != null) {
                 // c=BaseDeDatos.ConsultaEspecifica(dataBaseHelper,"Kontakt");
-                c = BaseDeDatos.ConsultaDistancia( dataBaseHelper );
+                c = dataBaseHelper.ConsultaDistancia( dataBaseHelper );
                 if (c.moveToFirst()) {
                     res = new String[c.getCount()];
                     res[cont] = c.getString( 0 ) + ";" + c.getString( 1 );
@@ -551,7 +583,7 @@ public class IndoorScan extends AppCompatActivity implements DialogoConfig.Confi
                 Toast.makeText( this, "Error de BD", Toast.LENGTH_LONG ).show();
         } catch (Exception e) {
             Toast.makeText( this, "Error de Ejecucion", Toast.LENGTH_LONG ).show();
-            BaseDeDatos.CleanTableTemp( dataBaseHelper );
+            dataBaseHelper.CleanTableTemp( dataBaseHelper );
             EstadoOriginal( true );
             e.printStackTrace();
         }
@@ -584,37 +616,9 @@ public class IndoorScan extends AppCompatActivity implements DialogoConfig.Confi
         }
     }
 
-    /**
-     * M. que crea el dialogo de configuracion
-     */
-    public void crearDialogoConfig() {
-        SharedPreferences pref = getSharedPreferences( "datos", Context.MODE_PRIVATE );
-        DialogoConfig dialogo = new DialogoConfig( pref.getString( "tiempo", "60000" ) );
-        dialogo.show( getSupportFragmentManager(), "config" );
-        android.app.Fragment frag = getFragmentManager().findFragmentByTag( "config" );
-        if (frag != null) {
-            getFragmentManager().beginTransaction().remove( frag ).commit();
-        }
-    }
 
-    /**
-     * M. sobreescrito para la finalizacion del dialogo de informacion de las
-     * configuracion de tiempo
-     */
-    @Override
-    public void FinalizaConfig(int time) {
-        ciclo = time;
-        if (ciclo != -1) {
-            SharedPreferences pref = getSharedPreferences( "datos",
-                    Context.MODE_PRIVATE );
-            SharedPreferences.Editor edit = pref.edit();
-            edit.putString( "tiempo", time + "" );
-            Log.i( "config", time + "" );
-            edit.commit();
-        }
-    }
 
-    /**
+      /**
      * M. sobreescrito para la finalizacion del dialogo de informacion de los lugares
      */
     @Override

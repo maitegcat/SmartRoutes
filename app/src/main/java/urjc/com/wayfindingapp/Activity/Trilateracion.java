@@ -18,6 +18,7 @@ public class Trilateracion {
     /** Constructor de la clase que toma los valores RSSI y crea tres objetos de la clase punto, para realizar la trilateracion */
 
     public Trilateracion(String coordenadas[]) {
+        try {
         RSSI = coordenadas;
         for (int i = 0; i < coordenadas.length; i++) {
             String balizas[] = coordenadas[i].split(";");
@@ -41,33 +42,52 @@ public class Trilateracion {
                     break;
             }
         }
+        } catch (NumberFormatException e) {
+            // Manejo de la excepción.
+            System.err.println("Error al convertir cadenas a números en el constructor Trilateracion.");
+        }
     }
     /**
     Algoritmo de trilateracion
     */
     public void Locate() {
+        try {
         DecimalFormatSymbols simbolos =
                 DecimalFormatSymbols.getInstance( Locale.ENGLISH);
         DecimalFormat decimas = new DecimalFormat("0.00", simbolos);
-        double Pa = ((Math.pow(disB, 2) - Math.pow(disC, 2)));
-        double Pb = ((Math.pow(disB, 2) - Math.pow(disA, 2)));
-        double x = 0, y = 0;
-        y = (Pb * (B.coorX - C.coorX) - Pa * (B.coorX - A.coorX)) / ((A.coorY - B.coorY)
-                * (B.coorX - C.coorX) - (C.coorY - B.coorY) * (B.coorX - C.coorX));
-        x = (y  * (A.coorY - B.coorY) - Pb) / (B.coorX - C.coorX);
 
-        if (x < 0) {
-            x = x * -1; }
-        if (y < 0) {
-            y = y * -1; }
-        if (x > 14) {
-            x = 13;  }
-        if (y > 12){
-            y = 12; }
+        double denominator = (A.coorY - B.coorY) * (B.coorX - C.coorX) - (C.coorY - B.coorY) * (B.coorX - C.coorX);
 
-        coord_x= decimas.format(x);
-        coord_y= decimas.format(y);
+        // Verificar división por cero
+        if (denominator != 0) {
+        double term1 = ((Math.pow(disB, 2) - Math.pow(disC, 2)));
+        double term2 = ((Math.pow(disB, 2) - Math.pow(disA, 2)));
+
+            double y = (term2 * (B.coorX - C.coorX) - term1 * (B.coorX - A.coorX)) / denominator;
+            double x = (y * (A.coorY - B.coorY) - term2) / (B.coorX - C.coorX);
+
+            // Ajustar valores negativos y límites
+            x = Math.abs(x);
+            y = Math.abs(y);
+            if (x > 14) {
+                x = 13;
+            }
+            if (y > 12) {
+                y = 12;
+            }
+
+            coord_x = decimas.format(x);
+            coord_y = decimas.format(y);
+        } else {
+            // Manejar el caso de división por cero
+            coord_x = "Indefinido";
+            coord_y = "Indefinido";
         }
+        } catch (NumberFormatException e) {
+            // Manejo de la excepción.
+            System.err.println("Error al convertir cadenas a números en el método Locate.");
+        }
+    }
 /**
 Clase interna para almacenar el nombre de cada posicion, y sus coordenadas
 */

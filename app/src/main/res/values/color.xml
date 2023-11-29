@@ -1,10 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <color name="colorPrimary">#3F51B5</color>
-   <!-- <color name="colorPrimaryDark">#09a4fd</color>-->
-    <!--<color name="colorPrimaryDark">#8E44AD</color>-->
-     <color name="colorPrimaryDark">#0074BD</color>
-
+    <color name="colorPrimaryDark">#0074BD</color>
     <color name="colorAccent">#FF4081</color>
     <color name="colorboton1">#e3b1d2</color>
     <color name="colorboton2">#bdecb6</color>
@@ -14,13 +11,9 @@
     <color name="naranja">#FFB16E</color>
     <color name="rojo">#ffff0000</color>
     <color name="verde">#ff00ff00</color>
-
     <color name="gris">#9BA3C5</color>
-
-
     <color name="amarillo">#EFC84A</color>
     <color name="azul">#334D5C</color>
-
     <color name="azul_dark">#102A39</color>
     <color name="azul_light">#6A808C</color>
     <color name="lila_dark">#333574</color>
@@ -28,8 +21,4 @@
     <color name="rosa_dark">#7C4554</color>
     <color name="rosa_light">#D65DA4</color>
     <color name="verde_dark">#597943</color>
-
-
-
-
 </resources>
