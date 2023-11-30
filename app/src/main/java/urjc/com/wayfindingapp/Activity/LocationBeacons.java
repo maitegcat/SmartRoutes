@@ -15,7 +15,6 @@ import java.util.Base64;
 
 public class LocationBeacons extends AppCompatActivity {
 
-
     String balizas[];
     DataBaseHelper base = new DataBaseHelper( this, dbNombre, null, dbVersion);
 

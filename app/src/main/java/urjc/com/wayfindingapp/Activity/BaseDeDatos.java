@@ -16,7 +16,7 @@ import java.util.logging.Logger;
 public class BaseDeDatos<apiInterface> {
    //  String conexionBD = "jdbc:mysql://localhost:3306/wayfindingBBDD";
     String conexionBD = "jdbc:mysql://10.50.211.100:8080/wayfindingBBDD";
-     Connection conexion = null;
+    Connection conexion = null;
     ResultSet rs;
     Statement s;
     SQLiteDatabase db;
