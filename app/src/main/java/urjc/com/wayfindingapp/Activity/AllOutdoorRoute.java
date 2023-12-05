@@ -45,5 +45,6 @@ public class AllOutdoorRoute extends AppCompatActivity {
         });
 
        // Log.d("listOuterGuide",listOuterGuide[0]+"");
+        ;
     }
 }

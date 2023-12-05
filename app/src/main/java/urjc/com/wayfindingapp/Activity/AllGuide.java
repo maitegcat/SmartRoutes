@@ -91,7 +91,6 @@ public class AllGuide extends AppCompatActivity {
             }
 
         });
-
     }
 }
 

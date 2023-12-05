@@ -73,6 +73,7 @@ public class MainActivity extends AppCompatActivity /*implements TextToSpeech.On
 
             }
         });*/
+
     }
    /* *//**
      * Metodo TextToSpeech

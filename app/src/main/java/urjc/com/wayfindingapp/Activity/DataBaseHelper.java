@@ -20,12 +20,12 @@ import urjc.com.wayfindingapp.R;
 public class DataBaseHelper extends SQLiteOpenHelper {
 
     private SQLiteDatabase db;
-    String temporal = "CREATE TABLE Temporal (Nombre TEXT, distancia DOUBLE)";
+    String temporal = "CREATE TABLE Temporal (Nombre TEXT, distancia DOUBLE,RSSI INTEGER NOT NULL, Timestamp DATETIME DEFAULT CURRENT_TIMESTAMP, FOREIGN KEY (Nombre) REFERENCES Balizas(Name) )";
 
-    String Baliza = "CREATE TABLE Baliza (IDbaliza INTEGER PRIMARY KEY AUTOINCREMENT, Name TEXT NOT NULL,  Coord_x INTEGER NOT NULL, Coord_y INTEGER NOT NULL,Codletra TEXT NOT NULL, IDlugar INTEGER )";
-    String Lugar = "CREATE TABLE Lugar (IDLugar INTEGER PRIMARY KEY AUTOINCREMENT, Name TEXT NOT NULL, Descripcion TEXT NOT NULL, Coordenada_x INTEGER NOT NULL, Coordenada_y INTEGER NOT NULL, imagen TEXT,IDtype_place INTEGER, IDlugares_prox INTEGER)";
+    String Baliza = "CREATE TABLE Baliza (IDbaliza INTEGER PRIMARY KEY AUTOINCREMENT, Name TEXT NOT NULL,  Coord_x INTEGER NOT NULL, Coord_y INTEGER NOT NULL,Codletra TEXT NOT NULL, Tipo TEXT NOT NULL, IDlugar INTEGER, FOREIGN KEY (IDlugar) REFERENCES Lugares(IDlugar)  )";
+    String Lugar = "CREATE TABLE Lugar (IDLugar INTEGER PRIMARY KEY AUTOINCREMENT, Name TEXT NOT NULL, Descripcion TEXT NOT NULL, Coordenada_x INTEGER NOT NULL, Coordenada_y INTEGER NOT NULL, imagen TEXT,IDtype_place INTEGER, IDlugares_prox INTEGER, IDbaliza INTEGER, FOREIGN KEY (IDbaliza) REFERENCES Balizas(IDbaliza))";
     String Typeplace = "CREATE TABLE Typeplace (IDTypeplace INTEGER PRIMARY KEY AUTOINCREMENT,NAME TEXT NOT NULL,DESCRIPCION TEXT NOT NULL)";
-    String Dis_baliza = "CREATE TABLE Dis_baliza (IDdistancia_baliza INTEGER PRIMARY KEY AUTOINCREMENT,Value TEXT NOT NULL,Baliza_a INTEGER NOT NULL,Baliza_b INTEGER NOT NULL, Baliza_c INTEGER NOT NULL)";
+    String Dis_baliza = "CREATE TABLE Dis_baliza (IDdistancia_baliza INTEGER PRIMARY KEY AUTOINCREMENT,Value TEXT NOT NULL,Baliza_a INTEGER NOT NULL,Baliza_b INTEGER NOT NULL,FOREIGN KEY (baliza_a) REFERENCES baliza (idbaliza) ON DELETE NO ACTION ON UPDATE NO ACTION,FOREIGN KEY (Baliza_b) REFERENCES baliza (idbaliza) ON DELETE NO ACTION ON UPDATE NO ACTION  )";
     String Lugares_prox = "CREATE TABLE Lugares_prox (IDLugares_prox INTEGER PRIMARY KEY AUTOINCREMENT,Lugar_prox INTEGER NOT NULL, Lugar_prin INTEGER NOT NULL)";
     String User = "CREATE TABLE User (IDUser INTEGER PRIMARY KEY AUTOINCREMENT,NAME TEXT NOT NULL,Password TEXT NOT NULL)";
 
@@ -58,59 +58,59 @@ public class DataBaseHelper extends SQLiteOpenHelper {
         db.execSQL(User);
 
         //Tabla Balizas mis Balizas Kontakt
-        db.execSQL("INSERT INTO Baliza (IDbaliza , Name, Coord_x, Coord_y, Codletra,IDlugar) VALUES(?,'Kontakt DH3v 1', 0, 0,'A',1)");
-        db.execSQL("INSERT INTO Baliza (IDbaliza , Name, Coord_x, Coord_y, Codletra,IDlugar) VALUES(?,'Kontakt OLtx 2', 5, 12,'B',2)");
-        db.execSQL("INSERT INTO Baliza (IDbaliza , Name, Coord_x, Coord_y, Codletra,IDlugar) VALUES(?,'Kontakt Pu2z 3', 13, 0,'C',3)");
+        db.execSQL("INSERT INTO Baliza (IDbaliza , Name, Coord_x, Coord_y, Codletra,Tipo, IDlugar) VALUES(?,'Kontakt DH3v 1', 0, 0,'A','trilateracion',1)");
+        db.execSQL("INSERT INTO Baliza (IDbaliza , Name, Coord_x, Coord_y, Codletra,Tipo, IDlugar) VALUES(?,'Kontakt OLtx 2', 5, 12,'B','trilateracion', 2)");
+        db.execSQL("INSERT INTO Baliza (IDbaliza , Name, Coord_x, Coord_y, Codletra,Tipo, IDlugar) VALUES(?,'Kontakt Pu2z 3', 13, 0,'C','fija', 3)");
 
         //Tabla Balizas Kontakt sin incluir el nombre del fabricante y el numero de baliza para pruebas en URJC se debe ncluir numero de la baliza para posicionarla segun plano
-        db.execSQL("INSERT INTO Baliza (IDbaliza , Name, Coord_x, Coord_y, Codletra,IDlugar) VALUES(?,'Kontakt 61Lf 1', 0, 0,'A',4)");
-        db.execSQL("INSERT INTO Baliza (IDbaliza , Name, Coord_x, Coord_y, Codletra,IDlugar) VALUES(?,'Kontakt 9ctc 2', 39, 34,'B',5)");
-        db.execSQL("INSERT INTO Baliza (IDbaliza , Name, Coord_x, Coord_y, Codletra,IDlugar) VALUES(?,'Kontakt DCpM 3', 57, 0,'C',6)");
+        db.execSQL("INSERT INTO Baliza (IDbaliza , Name, Coord_x, Coord_y, Codletra,Tipo, IDlugar) VALUES(?,'Kontakt 61Lf 1', 0, 0,'A','trilateracion',4)");
+        db.execSQL("INSERT INTO Baliza (IDbaliza , Name, Coord_x, Coord_y, Codletra,Tipo, IDlugar) VALUES(?,'Kontakt 9ctc 2', 39, 34,'B','trilateracion',5)");
+        db.execSQL("INSERT INTO Baliza (IDbaliza , Name, Coord_x, Coord_y, Codletra,Tipo, IDlugar) VALUES(?,'Kontakt DCpM 3', 57, 0,'C','trilateracion',6)");
 
-        db.execSQL("INSERT INTO Baliza (IDbaliza , Name, Coord_x, Coord_y, Codletra,IDlugar) VALUES(?,'Kontakt KDHT 4', 13, 0,'C',7)");
-        db.execSQL("INSERT INTO Baliza (IDbaliza , Name, Coord_x, Coord_y, Codletra,IDlugar) VALUES(?,'Kontakt MNpi 5', 5, 12,'B',8)");
+        db.execSQL("INSERT INTO Baliza (IDbaliza , Name, Coord_x, Coord_y, Codletra,Tipo, IDlugar) VALUES(?,'Kontakt KDHT 4', 13, 0,'D','fija',7)");
+        db.execSQL("INSERT INTO Baliza (IDbaliza , Name, Coord_x, Coord_y, Codletra,Tipo, IDlugar) VALUES(?,'Kontakt MNpi 5', 5, 12,'E','fija',8)");
 
         //Tablas Balizas Kontakt sin incluir el nombre del fabricante y el numero de baliza resto de balizas hasta 11 para pruebas en FJ23 hay que incluir numero de la baliza para posicionarla segun plano
 
-        db.execSQL("INSERT INTO Baliza (IDbaliza , Name, Coord_x, Coord_y, Codletra,IDlugar) VALUES(?,'Kontakt axuY 6', 0, 10,'B',9)");
-        db.execSQL("INSERT INTO Baliza (IDbaliza , Name, Coord_x, Coord_y, Codletra,IDlugar) VALUES(?,'Kontakt ilky 7', 11, 33,'A',10)");
-        db.execSQL("INSERT INTO Baliza (IDbaliza , Name, Coord_x, Coord_y, Codletra,IDlugar) VALUES(?,'Kontakt syEJ 8', 10, 0,'C',11)");
+        db.execSQL("INSERT INTO Baliza (IDbaliza , Name, Coord_x, Coord_y, Codletra,Tipo, IDlugar) VALUES(?,'Kontakt axuY 6', 0, 10,'B','trilateracion',9)");
+        db.execSQL("INSERT INTO Baliza (IDbaliza , Name, Coord_x, Coord_y, Codletra,Tipo, IDlugar) VALUES(?,'Kontakt ilky 7', 11, 33,'A','trilateracion',10)");
+        db.execSQL("INSERT INTO Baliza (IDbaliza , Name, Coord_x, Coord_y, Codletra,Tipo, IDlugar) VALUES(?,'Kontakt syEJ 8', 10, 0,'C','trilateracion',11)");
 
-        db.execSQL("INSERT INTO Baliza (IDbaliza , Name, Coord_x, Coord_y, Codletra,IDlugar) VALUES(?,'Kontakt tn25 9', 11, 35,'A',12)");
-        db.execSQL("INSERT INTO Baliza (IDbaliza , Name, Coord_x, Coord_y, Codletra,IDlugar) VALUES(?,'Kontakt x66C 10', 10, 0,'B',13)");
+        db.execSQL("INSERT INTO Baliza (IDbaliza , Name, Coord_x, Coord_y, Codletra,Tipo, IDlugar) VALUES(?,'Kontakt tn25 9', 11, 35,'D','fija',12)");
+        db.execSQL("INSERT INTO Baliza (IDbaliza , Name, Coord_x, Coord_y, Codletra,Tipo, IDlugar) VALUES(?,'Kontakt x66C 10', 10, 0,'E','fija',13)");
 
         //Tabla Balizas Kontakt sin incluir el nombre del fabricante y el numero de baliza para pruebas en FJ23 del grupo de 13 balizas e-mail del 21/9/2023 Marcos
-        db.execSQL("INSERT INTO Baliza (IDbaliza , Name, Coord_x, Coord_y, Codletra,IDlugar) VALUES(?,'Kontakt HuF59h 11', 0, 10,'C',14)");
-        db.execSQL("INSERT INTO Baliza (IDbaliza , Name, Coord_x, Coord_y, Codletra,IDlugar) VALUES(?,'Kontakt HuFc2H 12', 0, 10,'C',15)");
+        db.execSQL("INSERT INTO Baliza (IDbaliza , Name, Coord_x, Coord_y, Codletra,Tipo, IDlugar) VALUES(?,'Kontakt HuF59h 11', 0, 10,'F','fija',14)");
+        db.execSQL("INSERT INTO Baliza (IDbaliza , Name, Coord_x, Coord_y, Codletra,Tipo, IDlugar) VALUES(?,'Kontakt HuFc2H 12', 0, 10,'G','fija',15)");
 
 
         /*******************************************************************************************/
         //Tabla lugar planos Casa
-        db.execSQL("INSERT INTO Lugar (IDLugar , Name, Descripcion, Coordenada_x, Coordenada_y, imagen,IDtype_place,IDlugares_prox ) VALUES(?,'CASA','BALIZA DH3v 1', 0, 0, " + R.drawable.piso1 + ", 1,1)");
-        db.execSQL("INSERT INTO Lugar (IDLugar , Name, Descripcion, Coordenada_x, Coordenada_y, imagen,IDtype_place,IDlugares_prox ) VALUES(?,'CASA','BALIZA OLtx 2', 0, 0, " + R.drawable.piso1 + ", 2,2)");
-        db.execSQL("INSERT INTO Lugar (IDLugar , Name, Descripcion, Coordenada_x, Coordenada_y, imagen,IDtype_place,IDlugares_prox ) VALUES(?,'CASA','BALIZA Pu2z 3', 0, 0," + R.drawable.piso1 + ", 3,3)");
+        db.execSQL("INSERT INTO Lugar (IDLugar , Name, Descripcion, Coordenada_x, Coordenada_y, imagen,IDtype_place,IDlugares_prox ) VALUES(?,'CASA','BALIZA DH3v 1', 0, 0, " + R.drawable.piso1 + ", 1,1,1)");
+        db.execSQL("INSERT INTO Lugar (IDLugar , Name, Descripcion, Coordenada_x, Coordenada_y, imagen,IDtype_place,IDlugares_prox ) VALUES(?,'CASA','BALIZA OLtx 2', 0, 0, " + R.drawable.piso1 + ", 2,2,2)");
+        db.execSQL("INSERT INTO Lugar (IDLugar , Name, Descripcion, Coordenada_x, Coordenada_y, imagen,IDtype_place,IDlugares_prox ) VALUES(?,'CASA','BALIZA Pu2z 3', 0, 0," + R.drawable.piso1 + ", 3,3,3)");
 
         /*******************************************************************************************/
         //Tabla lugar planos URJC laboratorio III
-        db.execSQL("INSERT INTO Lugar (IDLugar , Name, Descripcion, Coordenada_x, Coordenada_y, imagen,IDtype_place,IDlugares_prox ) VALUES(?,'ACCESO','Vertibulo', 0, 0, " + R.drawable.urjcplanopasillo + ", 4,4)");
-        db.execSQL("INSERT INTO Lugar (IDLugar , Name, Descripcion, Coordenada_x, Coordenada_y, imagen,IDtype_place,IDlugares_prox ) VALUES(?,'ACCESO','Vertibulo', 0, 0, " + R.drawable.urjcplanopasillo + ", 5,5)");
-        db.execSQL("INSERT INTO Lugar (IDLugar , Name, Descripcion, Coordenada_x, Coordenada_y, imagen,IDtype_place,IDlugares_prox ) VALUES(?,'ACESSO','Vertibulo', 0, 0," + R.drawable.urjcplanopasillo + ", 6,6)");
-        db.execSQL("INSERT INTO Lugar (IDLugar , Name, Descripcion, Coordenada_x, Coordenada_y, imagen,IDtype_place,IDlugares_prox ) VALUES(?,'LOCAL 3','Local 3 P6', 0, 0, " + R.drawable.urjcplanol3 + ", 7,7)");
-        db.execSQL("INSERT INTO Lugar (IDLugar , Name, Descripcion, Coordenada_x, Coordenada_y, imagen,IDtype_place,IDlugares_prox ) VALUES(?,'LOCAL 4','Local 4 P6', 0, 0, " + R.drawable.urjcplanol4 + ", 8,8)");
+        db.execSQL("INSERT INTO Lugar (IDLugar , Name, Descripcion, Coordenada_x, Coordenada_y, imagen,IDtype_place,IDlugares_prox ) VALUES(?,'ACCESO','Vertibulo', 0, 0, " + R.drawable.urjcplanopasillo + ", 4,4,4)");
+        db.execSQL("INSERT INTO Lugar (IDLugar , Name, Descripcion, Coordenada_x, Coordenada_y, imagen,IDtype_place,IDlugares_prox ) VALUES(?,'ACCESO','Vertibulo', 0, 0, " + R.drawable.urjcplanopasillo + ", 5,5,5)");
+        db.execSQL("INSERT INTO Lugar (IDLugar , Name, Descripcion, Coordenada_x, Coordenada_y, imagen,IDtype_place,IDlugares_prox ) VALUES(?,'ACESSO','Vertibulo', 0, 0," + R.drawable.urjcplanopasillo + ", 6,6,6)");
+        db.execSQL("INSERT INTO Lugar (IDLugar , Name, Descripcion, Coordenada_x, Coordenada_y, imagen,IDtype_place,IDlugares_prox ) VALUES(?,'LOCAL 3','Local 3 P6', 0, 0, " + R.drawable.urjcplanol3 + ", 7,7,7)");
+        db.execSQL("INSERT INTO Lugar (IDLugar , Name, Descripcion, Coordenada_x, Coordenada_y, imagen,IDtype_place,IDlugares_prox ) VALUES(?,'LOCAL 4','Local 4 P6', 0, 0, " + R.drawable.urjcplanol4 + ", 8,8,8)");
 
         //Tabla lugar planos FJ23
-        db.execSQL("INSERT INTO Lugar (IDLugar , Name, Descripcion, Coordenada_x, Coordenada_y, imagen,IDtype_place,IDlugares_prox ) VALUES(?,'SALA1','Sala de estimulacion cognitiva', 0, 0, " + R.drawable.fundjuan1b1 + ", 9,9)");
-        db.execSQL("INSERT INTO Lugar (IDLugar , Name, Descripcion, Coordenada_x, Coordenada_y, imagen,IDtype_place,IDlugares_prox ) VALUES(?,'SALA2','Sala de estimulacion cognitiva', 0, 0, " + R.drawable.fundjuan1b2 + ", 10,10)");
-        db.execSQL("INSERT INTO Lugar (IDLugar , Name, Descripcion, Coordenada_x, Coordenada_y, imagen,IDtype_place,IDlugares_prox ) VALUES(?,'SALA3','Sala pequeña', 0, 0," + R.drawable.fundjuan1b3 + ", 11,11)");
-        db.execSQL("INSERT INTO Lugar (IDLugar , Name, Descripcion, Coordenada_x, Coordenada_y, imagen,IDtype_place,IDlugares_prox ) VALUES(?,'SALA4','Sala grupal', 0, 0, " + R.drawable.fundjuan1b4 + ", 12,12)");
-        db.execSQL("INSERT INTO Lugar (IDLugar , Name, Descripcion, Coordenada_x, Coordenada_y, imagen,IDtype_place,IDlugares_prox ) VALUES(?,'SALA5','Sala grupal', 0, 0,  " + R.drawable.fundjuan1b5 + ", 13,13)");
-        db.execSQL("INSERT INTO Lugar (IDLugar , Name, Descripcion, Coordenada_x, Coordenada_y, imagen,IDtype_place,IDlugares_prox ) VALUES(?,'ACCESO','Acceso planta 1', 0, 0,  " + R.drawable.fundjuan1b6 + ", 14,14)");
-        db.execSQL("INSERT INTO Lugar (IDLugar , Name, Descripcion, Coordenada_x, Coordenada_y, imagen,IDtype_place,IDlugares_prox ) VALUES(?,'ACCESO','Acceso planta 1', 0, 0,  " + R.drawable.fundjuan1b6 + ", 15,15)");
-        db.execSQL("INSERT INTO Lugar (IDLugar , Name, Descripcion, Coordenada_x, Coordenada_y, imagen,IDtype_place,IDlugares_prox ) VALUES(?,'ACCESO','Acceso planta 1', 0, 0,  " + R.drawable.fundjuan1b6 + ", 16,16)");
-        db.execSQL("INSERT INTO Lugar (IDLugar , Name, Descripcion, Coordenada_x, Coordenada_y, imagen,IDtype_place,IDlugares_prox ) VALUES(?,'ACCESO','Acceso planta 2', 0, 0,  " + R.drawable.fundjuan2b9 + ", 17,17)");
-        db.execSQL("INSERT INTO Lugar (IDLugar , Name, Descripcion, Coordenada_x, Coordenada_y, imagen,IDtype_place,IDlugares_prox ) VALUES(?,'ACCESO','Acceso planta 2', 0, 0,  " + R.drawable.fundjuan2b9 + ", 18,18)");
-        db.execSQL("INSERT INTO Lugar (IDLugar , Name, Descripcion, Coordenada_x, Coordenada_y, imagen,IDtype_place,IDlugares_prox ) VALUES(?,'ACCESO','Acceso planta 2', 0, 0,  " + R.drawable.fundjuan2b9 + ", 19,19)");
-        db.execSQL("INSERT INTO Lugar (IDLugar , Name, Descripcion, Coordenada_x, Coordenada_y, imagen,IDtype_place,IDlugares_prox ) VALUES(?,'SALA6','Sala grupal planta 2', 0, 0,  " + R.drawable.fundjuan2b12 + ", 20,20)");
+        db.execSQL("INSERT INTO Lugar (IDLugar , Name, Descripcion, Coordenada_x, Coordenada_y, imagen,IDtype_place,IDlugares_prox ) VALUES(?,'SALA1','Sala de estimulacion cognitiva', 0, 0, " + R.drawable.fundjuan1b1 + ", 9,9,9)");
+        db.execSQL("INSERT INTO Lugar (IDLugar , Name, Descripcion, Coordenada_x, Coordenada_y, imagen,IDtype_place,IDlugares_prox ) VALUES(?,'SALA2','Sala de estimulacion cognitiva', 0, 0, " + R.drawable.fundjuan1b2 + ", 10,10,10)");
+        db.execSQL("INSERT INTO Lugar (IDLugar , Name, Descripcion, Coordenada_x, Coordenada_y, imagen,IDtype_place,IDlugares_prox ) VALUES(?,'SALA3','Sala pequeña', 0, 0," + R.drawable.fundjuan1b3 + ", 11,11,11)");
+        db.execSQL("INSERT INTO Lugar (IDLugar , Name, Descripcion, Coordenada_x, Coordenada_y, imagen,IDtype_place,IDlugares_prox ) VALUES(?,'SALA4','Sala grupal', 0, 0, " + R.drawable.fundjuan1b4 + ", 12,12,12)");
+        db.execSQL("INSERT INTO Lugar (IDLugar , Name, Descripcion, Coordenada_x, Coordenada_y, imagen,IDtype_place,IDlugares_prox ) VALUES(?,'SALA5','Sala grupal', 0, 0,  " + R.drawable.fundjuan1b5 + ", 13,13,13)");
+        db.execSQL("INSERT INTO Lugar (IDLugar , Name, Descripcion, Coordenada_x, Coordenada_y, imagen,IDtype_place,IDlugares_prox ) VALUES(?,'ACCESO','Acceso planta 1', 0, 0,  " + R.drawable.fundjuan1b6 + ", 14,14,14)");
+        db.execSQL("INSERT INTO Lugar (IDLugar , Name, Descripcion, Coordenada_x, Coordenada_y, imagen,IDtype_place,IDlugares_prox ) VALUES(?,'ACCESO','Acceso planta 1', 0, 0,  " + R.drawable.fundjuan1b6 + ", 15,15,15)");
+        db.execSQL("INSERT INTO Lugar (IDLugar , Name, Descripcion, Coordenada_x, Coordenada_y, imagen,IDtype_place,IDlugares_prox ) VALUES(?,'ACCESO','Acceso planta 1', 0, 0,  " + R.drawable.fundjuan1b6 + ", 16,16,16)");
+        db.execSQL("INSERT INTO Lugar (IDLugar , Name, Descripcion, Coordenada_x, Coordenada_y, imagen,IDtype_place,IDlugares_prox ) VALUES(?,'ACCESO','Acceso planta 2', 0, 0,  " + R.drawable.fundjuan2b9 + ", 17,17,17)");
+        db.execSQL("INSERT INTO Lugar (IDLugar , Name, Descripcion, Coordenada_x, Coordenada_y, imagen,IDtype_place,IDlugares_prox ) VALUES(?,'ACCESO','Acceso planta 2', 0, 0,  " + R.drawable.fundjuan2b9 + ", 18,18,18)");
+        db.execSQL("INSERT INTO Lugar (IDLugar , Name, Descripcion, Coordenada_x, Coordenada_y, imagen,IDtype_place,IDlugares_prox ) VALUES(?,'ACCESO','Acceso planta 2', 0, 0,  " + R.drawable.fundjuan2b9 + ", 19,19,19)");
+        db.execSQL("INSERT INTO Lugar (IDLugar , Name, Descripcion, Coordenada_x, Coordenada_y, imagen,IDtype_place,IDlugares_prox ) VALUES(?,'SALA6','Sala grupal planta 2', 0, 0,  " + R.drawable.fundjuan2b12 + ", 20,20,20)");
 
         /*******************************************************************************************/
         //Tabla Tipo de lugar
@@ -128,14 +128,14 @@ public class DataBaseHelper extends SQLiteOpenHelper {
         db.execSQL("INSERT INTO Typeplace (IDTypeplace , Name, Descripcion ) VALUES(?,'SALA6','Sala grupal planta 2')");
 
         /*******************************************************************************************/
-        db.execSQL("INSERT INTO Dis_baliza (IDdistancia_baliza , Value, Baliza_a, Baliza_b, Baliza_c) VALUES(?,4.0,1,2,0)");
-        db.execSQL("INSERT INTO Dis_baliza (IDdistancia_baliza , Value, Baliza_a, Baliza_b, Baliza_c) VALUES(?,8.0,1,3,0)");
-        db.execSQL("INSERT INTO Dis_baliza (IDdistancia_baliza , Value, Baliza_a, Baliza_b, Baliza_c) VALUES(?,4.0,2,1,0)");
-        db.execSQL("INSERT INTO Dis_baliza (IDdistancia_baliza , Value, Baliza_a, Baliza_b, Baliza_c) VALUES(?,8.0,2,3,0)");
-        db.execSQL("INSERT INTO Dis_baliza (IDdistancia_baliza , Value, Baliza_a, Baliza_b, Baliza_c) VALUES(?,4.0,3,1,0)");
-        db.execSQL("INSERT INTO Dis_baliza (IDdistancia_baliza , Value, Baliza_a, Baliza_b, Baliza_c) VALUES(?,8.0,3,2,0)");
-        db.execSQL("INSERT INTO Dis_baliza (IDdistancia_baliza , Value, Baliza_a, Baliza_b, Baliza_c) VALUES(?,4.0,3,1,0)");
-        db.execSQL("INSERT INTO Dis_baliza (IDdistancia_baliza , Value, Baliza_a, Baliza_b, Baliza_c) VALUES(?,8.0,3,2,0)");
+        db.execSQL("INSERT INTO Dis_baliza (IDdistancia_baliza , Value, Baliza_a, Baliza_b) VALUES(?,4.0,1,2)");
+        db.execSQL("INSERT INTO Dis_baliza (IDdistancia_baliza , Value, Baliza_a, Baliza_b) VALUES(?,8.0,1,3)");
+        db.execSQL("INSERT INTO Dis_baliza (IDdistancia_baliza , Value, Baliza_a, Baliza_b) VALUES(?,4.0,2,1)");
+        db.execSQL("INSERT INTO Dis_baliza (IDdistancia_baliza , Value, Baliza_a, Baliza_b) VALUES(?,8.0,2,3)");
+        db.execSQL("INSERT INTO Dis_baliza (IDdistancia_baliza , Value, Baliza_a, Baliza_b) VALUES(?,4.0,3,1)");
+        db.execSQL("INSERT INTO Dis_baliza (IDdistancia_baliza , Value, Baliza_a, Baliza_b) VALUES(?,8.0,3,2)");
+        db.execSQL("INSERT INTO Dis_baliza (IDdistancia_baliza , Value, Baliza_a, Baliza_b) VALUES(?,4.0,3,1)");
+        db.execSQL("INSERT INTO Dis_baliza (IDdistancia_baliza , Value, Baliza_a, Baliza_b) VALUES(?,8.0,3,2)");
 
         /*******************************************************************************************/
         db.execSQL("INSERT INTO Lugares_prox (IDLugares_prox,Lugar_prox, Lugar_prin) VALUES(?,1,1)");
@@ -501,21 +501,20 @@ public class DataBaseHelper extends SQLiteOpenHelper {
      * Metodo que incluye en la tabla temporal el nombre de la baliza y su distancia al dispositivo
      */
     public static boolean IntroTemp(DataBaseHelper dataBaseHelper, String nom, double
-            dist) {
+            dist,int rssi, String timestamp ) {
         boolean res;
         SQLiteDatabase db = dataBaseHelper.getWritableDatabase();
         if (db != null) {
-            if (db != null) {
                 ContentValues values = new ContentValues();
                 values.put("nombre", nom);
                 values.put("distancia", dist);
+                values.put("rssi", rssi);;
+                values.put("Timestamp", timestamp);
                 long i = db.insert("Temporal", null, values);
                 if (i > 0) {
                     res = true;
                 } else
                     res = false;
-            } else
-                res = false;
         } else
             res = false;
         db.close();
@@ -546,7 +545,7 @@ public class DataBaseHelper extends SQLiteOpenHelper {
         SQLiteDatabase db = dataBaseHelper.getReadableDatabase();
         Cursor c = null;
         if (db != null) {
-            String sql = "select Nombre, distancia " +
+            String sql = "select Nombre, distancia, RSSI, timestamp" +
                     "from Temporal " +
                     "order by distancia ASC";
             c = db.rawQuery(sql, null);
@@ -566,7 +565,7 @@ public class DataBaseHelper extends SQLiteOpenHelper {
         SQLiteDatabase db = dataBaseHelper.getReadableDatabase();
         Cursor c = null;
         if (db != null) {
-            String sql = "select Nombre, distancia " +
+            String sql = "select Nombre, distancia , RSSI, timestamp" +
                     "from Temporal " +
                     "where Nombre = '" + nom + "'";
             c = db.rawQuery(sql, null);

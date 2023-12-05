@@ -81,6 +81,8 @@ dependencies {
 
         implementation 'com.readystatesoftware.sqliteasset:sqliteassethelper:2.0.1'
         implementation 'androidx.sqlite:sqlite:2.1.0'
+        
+
     }
 
     repositories {

@@ -22,14 +22,16 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import androidx.appcompat.widget.Toolbar;
-
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
+import java.util.Locale;
 import java.util.Objects;
 
 import urjc.com.wayfindingapp.Model.Lugar;
@@ -64,7 +66,7 @@ public class IndoorScan extends AppCompatActivity implements DialogoInfo.Info, D
     public static TextToSpeech mTts;
     public static String toRead;
 
-
+    protected final String TAG = IndoorScan.this.getClass().getSimpleName();
     /**
      * Metodo sobrescrito que inicializa la app y sus elementos graficos
      */
@@ -97,34 +99,44 @@ public class IndoorScan extends AppCompatActivity implements DialogoInfo.Info, D
                     LOCATION_PERMISSION_REQUEST_CODE
             );
         }
-
         /**
          Llamada a la clase BluetoothAdapter
          */
         miBTAdapter = BluetoothAdapter.getDefaultAdapter();
-
         if (!miBTAdapter.isEnabled()) {
-            Intent turnOnIntent = new Intent(BluetoothAdapter.ACTION_REQUEST_ENABLE);
-            startActivityForResult(turnOnIntent, 0);
+            Intent turnOnIntent = new Intent( BluetoothAdapter.ACTION_REQUEST_ENABLE );
+            startActivityForResult( turnOnIntent, 0 );
         }
-
         mHandler = new Handler();
+        miBTAdapter = BluetoothAdapter.getDefaultAdapter();
 
-        info.setOnClickListener(v -> {
-            if (aulas_acceso == 1) {
-                Lugar registro = (Lugar) lugares.get(0);
-                crearDialogoInfo(registro);
-            } else
-                crearDialogoAcceso();
+        /**
+         M. sobrescrito asociado al evento click del boton para visualizar el dialogo de
+         la informacion del lugar
+         */
+        info.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(aulas_acceso==1) {
+                    Lugar registro = (Lugar) lugares.get(0);
+                    crearDialogoInfo(registro);
+                }else
+                    crearDialogoAcceso();
+            }
         });
-
         if (miBTAdapter.isEnabled()) {
-            SharedPreferences pref = getSharedPreferences("datos", Context.MODE_PRIVATE);
-            ciclo = Integer.parseInt(Objects.requireNonNull(pref.getString("tiempo", "60000")));
-            Escanear(true);
+            SharedPreferences pref = getSharedPreferences( "datos",
+                    Context.MODE_PRIVATE );
+            ciclo = Integer.parseInt( Objects.requireNonNull( pref.getString( "tiempo", "60000" ) ) );
+
+            Escanear( true );
         } else {
-            EstadoOriginal(false);
+            EstadoOriginal( false );
         }
+    }
+
+    public void setSupportActionBar(Toolbar toolbar) {
+
     }
 
     /**
@@ -132,15 +144,43 @@ public class IndoorScan extends AppCompatActivity implements DialogoInfo.Info, D
      */
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflar el menú; para añadir elementos a la barra de acciones .
+        MenuInflater inflater = getMenuInflater();
+      //  inflater.inflate( R.menu.credits, menu );
+        /* AlertDialog alertDialog = new AlertDialog.Builder(this).create();
+        alertDialog.setTitle("Bien!!! ");
+        alertDialog.setMessage("Has conseguido 10 puntos");
+        alertDialog.setIcon(R.drawable.medalla);
+        alertDialog.show();*/
         return true;
     }
 
+    /**
+     * M. sobrescrito asociado al la seleccion de un elemento del menu
+     */
+ /*   @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+
+        int id = item.getItemId();
+        //noinspection SimplifiableIfStatement
+        if (id == R.id.tiempo) {
+            crearDialogoConfig();
+            return true;
+        } else if (id == R.id.menu_actualizar) {
+            Reiniciar();
+        }
+        return super.onOptionsItemSelected( item );
+    }*/
+
+    /**
+     * M. encargado de reiniciar la app
+     */
     public void Reiniciar() {
-        DataBaseHelper.CleanTableTemp(dataBaseHelper);
+        BaseDeDatos.CleanTableTemp( dataBaseHelper );
         Intent i = getBaseContext().getPackageManager()
-                .getLaunchIntentForPackage(getBaseContext().getPackageName());
-        i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-        startActivity(i);
+                .getLaunchIntentForPackage( getBaseContext().getPackageName() );
+        i.addFlags( Intent.FLAG_ACTIVITY_CLEAR_TOP );
+        startActivity( i );
     }
 
     /**
@@ -149,51 +189,56 @@ public class IndoorScan extends AppCompatActivity implements DialogoInfo.Info, D
      */
     public void Hilo(boolean enable) {
         if (enable && !estado1) {
-            mHandler.postDelayed(() -> {
-                estado1 = false;
-                Escanear(true);
-            }, ciclo);
+            mHandler.postDelayed( new Runnable() {
+                @Override
+                public void run() {
+                    estado1 = false;
+                    Escanear( true );
+                }
+            }, ciclo );
             estado1 = true;
         } else {
             estado1 = false;
         }
     }
 
-    private void Localizar() {
-        String[] nombreDistancia = CrearArray();
-        StringBuilder baliza = new StringBuilder();
-
-        for (String s : nombreDistancia) {
-            baliza.append(s).append(":");
+    /**
+     * M. encargado de representar los resultados
+     */
+    private void Localizar(){
+        String[] coord = CrearArray();
+        String res,baliza = "";
+        for(int i=0;i<coord.length;i++) {
+            baliza+= coord[i] + ":";
         }
+        Log.i("Baliza: ",baliza.substring(0,baliza.length()-1));
+        //WS_Localizacion servicio = (WS_Localizacion) new WS_Localizacion().execute(baliza);
 
-        Log.i("Baliza: ", baliza.substring(0, baliza.length() - 1));
-
-        // Aquí se realiza la consulta a la base de datos para obtener la información de la baliza
+        // Aquí realizas la consulta a la base de datos para obtener la información de la baliza
         SQLiteDatabase db = dataBaseHelper.getReadableDatabase();
-        String query = "SELECT Name, Coord_x, Coord_y FROM Baliza WHERE IDbaliza = ?";
-        Cursor cursor = db.rawQuery(query, new String[]{baliza.toString()});
+        String query = "SELECT Coord_x, Coord_y FROM Balizas WHERE Nombre = ?";
+        Cursor cursor = db.rawQuery(query, new String[]{baliza});
 
         try {
             if (cursor.moveToFirst()) {
-                String nom_lugar = cursor.getString(cursor.getColumnIndex("Name"));
-                int coordX = cursor.getInt(cursor.getColumnIndex("Coord_x"));
-                int coordY = cursor.getInt(cursor.getColumnIndex("Coord_y"));
+                String nom_lugar = cursor.getString( cursor.getColumnIndex( "Name" ) );
+                int coordX = cursor.getInt( cursor.getColumnIndex( "Coord_x" ) );
+                int coordY = cursor.getInt( cursor.getColumnIndex( "Coord_y" ) );
 
                 if (nom_lugar != null) {
-                    Visualizar(nom_lugar, "X: " + coordX + "-Y: " + coordY, String.valueOf(image));
+                    Visualizar(nom_lugar, "X: " + coordX + "-Y: " + coordY , String.valueOf( image ) );
                 } else {
-                    Visualizar("null", "null", "null");
+                    Visualizar( "null", "null", "null" );
                 }
-                Toast.makeText(this, "Consulta exitosa", Toast.LENGTH_LONG).show();
+                Toast.makeText( this, "Consulta exitosa", Toast.LENGTH_LONG ).show();
             } else {
-                Visualizar("null", "null", null);
-                Toast.makeText(this, "No se encontraron datos para la baliza", Toast.LENGTH_LONG).show();
+                Visualizar( "null", "null", null);
+                Toast.makeText( this, "No se encontraron datos para la baliza", Toast.LENGTH_LONG ).show();
             }
         } catch (Exception e) {
-            DataBaseHelper.CleanTableTemp(dataBaseHelper);
-            Toast.makeText(this, e.toString(), Toast.LENGTH_LONG).show();
-            EstadoOriginal(true);
+            BaseDeDatos.CleanTableTemp( dataBaseHelper );
+            Toast.makeText( this, e.toString(), Toast.LENGTH_LONG ).show();
+            EstadoOriginal( true );
             e.printStackTrace();
         } finally {
             cursor.close();
@@ -348,11 +393,17 @@ public class IndoorScan extends AppCompatActivity implements DialogoInfo.Info, D
         @SuppressLint("StringFormatMatches")
         @Override
         public void onLeScan(BluetoothDevice device, int rssi, byte[] scanRecord) {
+            String timestamp = obtenerTimestamp();
+
             if (device.getName() != null) {
-                if (resView.equals("") || !resView.contains(device.getName())) {
+                // Filtrar dispositivos por nombre que comienzan con "Kontakt"
+               //if (device.getName() != null && device.getName().startsWith("Kontakt"))
+
+                    if (resView.equals("") || !resView.contains(device.getName())) {
                     double distanciaDispositivo = Distancia(rssi);
                     resView = resView + "\n" + device.getName() + ";" + distanciaDispositivo;
-                    boolean flag = DataBaseHelper.IntroTemp(dataBaseHelper, device.getName(), distanciaDispositivo);
+                    boolean flag = DataBaseHelper.IntroTemp(dataBaseHelper, device.getName(), distanciaDispositivo, rssi, timestamp);
+
                     Toast.makeText(getApplicationContext(), device.getName(), Toast.LENGTH_LONG).show();
                     if (!flag) {
                         Toast.makeText(getApplicationContext(), "Error de DB", Toast.LENGTH_LONG).show();
@@ -361,7 +412,10 @@ public class IndoorScan extends AppCompatActivity implements DialogoInfo.Info, D
             }
         }
     };
-
+    private String obtenerTimestamp() {
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.getDefault());
+        return sdf.format(new Date());
+    }
     /**
      * M. crea la cadena con los nombres de las balizas y sus valores RSSI
      */

@@ -67,7 +67,8 @@ public class MapsActivity extends AppCompatActivity {
        if (tengoPermisoEscritura()) {
                 cargarMapas();
             }
-        }
+
+    }
 
         private void cargarMapas() {
 
